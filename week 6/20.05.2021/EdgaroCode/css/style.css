@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  background-color: aqua;
+  gap: 10px;
+  width: 75vh;
+  height: 45vh;
+  margin: 10% auto;
+  padding: 10px;
+}
+
+.item {
+  background-color: aliceblue;
+}
+/*# sourceMappingURL=style.css.map */

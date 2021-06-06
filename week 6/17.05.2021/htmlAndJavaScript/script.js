@@ -1,0 +1,15 @@
+// document.getElementById("text").innerHTML = "hellow world";
+document.getElementById("text").textContent = "hellow world";
+document.getElementById("text").style.background = `hotpink`;
+const text = document.getElementById(`text`).style;
+const box = document.querySelector(`.box`).style;
+text.color = `gray`;
+text.padding = `10px`;
+box.width = `200px`;
+box.height = `200px`;
+box.margin = `0 auto`;
+box.background = `aqua`;
+box.display = `flex`;
+box.justifyContent = `center`;
+box.alignItems = `center`;
+box.marginTop = `10px`;

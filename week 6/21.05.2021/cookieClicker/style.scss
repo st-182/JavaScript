@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+%flex-ctr-xy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+%flex-ctr-yx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+body {
+  background: linear-gradient(to right, green, yellow);
+  // background-color: yellow;
+  // height: 100vh;
+  text-align: center;
+}
+.gamecontainer {
+  width: 50%;
+  margin: 20px auto;
+}
+.size {
+  height: 90vh;
+  border: 1px solid black;
+  @extend %flex-ctr-yx;
+}
+button {
+  background-color: #4caf50; /* Green */
+  border: 1px solid yellow;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  &:active {
+    border: 1px solid rgb(0, 225, 255);
+  }
+}
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+#gamepage {
+  display: none;
+}
+#shoppage {
+  display: none;
+}
+.flex {
+  @extend %flex-ctr-xy;
+  display: none;
+  img {
+    height: 100px;
+    width: 100px;
+  }
+}
+.transform {
+  transform: scale(1.1) !important;
+  animation-duration: 2s !important;
+}
+.rotate {
+  animation-name: spinner;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

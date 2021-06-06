@@ -1,0 +1,10 @@
+#btn {
+  padding: 20px;
+}
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}

@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+main {
+  padding: 10px;
+}
+@keyframes myanimations {
+  0% {
+    background-color: red;
+  }
+  25% {
+    background-color: yellow;
+  }
+  50% {
+    background-color: blue;
+  }
+  75% {
+    background-color: green;
+  }
+  100% {
+    background-color: black;
+  }
+}
+h1 {
+  color: white;
+  background-color: black;
+  border-radius: 50px;
+  padding: 0 10px;
+  animation-name: none;
+  animation-duration: 5s;
+}
+form {
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  padding: 50px;
+  color: white;
+}
+.cinema {
+  background: url(https://static01.nyt.com/images/2020/09/30/us/30army-naps-2/merlin_166702260_c365464a-6e07-458f-aeda-93c6dbf92321-mediumSquareAt3X.jpg)
+    no-repeat;
+  background-size: cover;
+  background-position: top;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

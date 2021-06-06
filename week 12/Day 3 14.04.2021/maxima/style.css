@@ -1,0 +1,58 @@
+/* .circle {
+  background-color: lime;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+} */
+
+body{
+    background-color: #c5c5c5;
+
+}
+.white{
+background-color: white;
+width: 60%;
+border-radius: 10px;
+}
+header, footer, main{
+  text-align: center;
+}
+.not{
+  text-align: justify ;
+}
+a {
+  color: black;
+}
+.maxima {
+  object-fit: cover;
+  height: 100%;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAY1BMVEX///8QQobjCRNMcaSHoMLD0OEfTo6luNHw8/dqibR5lbsuWpVbfaw9Zp3S2+jh5/D98PCWrMq0xNnlGCL4wcT0oqbqR07oNz/nKDH60dPuZmz2srXxhInvdXv74OHsVl3zk5e3+qrKAAAEHElEQVR4nO2X6ZaiMBCFWV0QwQX3tp33f8oBktqAbsXuczzO3O+PSQxJ3arKFgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4B+lOr7agt/htI1ebcLTXFS51vG2QnbRB5dXx+htheyiaPvpy6tDrePwIkOmMZM39ULq8VR3nEt7Ia21jijau3Kro61kpmfc+VKNFOsZyo4p40hCoVtPVL9UtWfcWkUtbpnc2vK1MZ16pk17Z8SZqi+1KZn6owjGknS+Xn4hJFbtC2ps1nbDcVVXzq5cfSdkXlenqq4jMpsM+uoZIRvrLi1EB4T9RTqiZr17HTdjetkR0hg+/0KItiSc/EhIYt0VqjWiA8L++oiY007FRkzv+aCuL4aFmIC0Th2HtjC37nKJEfSM4dw6i5Cj+9megu+FzIJCV5UQM7NLwqeF1EvPuCXt9SJvOn+piDgOq+COkDRYDwspfcvEWzCZ/UBIaN0lQjaklDLP+avq6Lh5HbzQlj0hazuhCKGAJLkvmL3/AXTGhqVzF4Ul7Xaast9c+9boOFN3Nr21069CN0aml74SQgOHJflq7FHiv/KWO3eRd0gIjb2Q3dn566p17HnMQSFu6HijVKldlqacSzhH5pb7yE/m85dGLX0fmjaRTc756/MRIe6cm7gvF66WyYgtHJBCfLUepcMviulSeW1J1vo+FJBm/fEicv4yy72iQWlJOSE+FN5JbiLqQUJy9QHtBubUv4t3XqqXYGaFdDZ466/DUEj4bEqUEHucWCGd3d0z6privZ3qczG1QpLuBNpf1VBIrBDnh1zfGfKOEHvcEqOuKX7OUp3ok8AIGQ6I99dKR4RDYoVQUY2zpjXh4roJBxl1TfGrTgc35y1E9xj2194eJJfAftIIKaio3F7SdG5fNEeAYsw1JSaTlbuosV2qZX988dfV6vA3LTG5EZJSUTyyCIwQc7/TjDlKliREvFIaIbSfhEv/5uGOqXtV0TWr5doXMiXvyt0kM0Ikd+lZxQ0jjhJvpJp8EWghnHJ892H/pe0psj196vO96glJyGTJ3o0RwiuKA8D3xxFHCZvMw2VGCL+z+G3Cu0/a7FiH+r1+6SaXETInk2XbktlSnbu9q5284O6Sssns6A1br1v5lJdkKyq6Ju46O5cRErOVlDG5EcK5q6zm3HpCSKq+DalV0lc9D0hcbf/VN2kl546QBZtMzWstRBJOXXc5tx4WQhc6sT7XQuQslKcJp0jwZ8dtu61WwnFMZLBUzCtESCm5q08NHuBhIb/GSU5Gel29KSt6917eW0fNxaXX+e2FBKuPVsrt1Xb8BpeP/f56vxsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADA/8JfcsMiQSAT45kAAAAASUVORK5CYII=");
+}
+nav a {
+  text-decoration: none;
+}
+nav a:hover{
+    text-decoration: underline;
+
+}
+.img {
+  height: 50px;
+  width: 30%;
+  /* overflow: hidden; */
+  text-align: center;
+  /* border: 1px solid black; */
+  background: center / contain no-repeat url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAY1BMVEX///8QQobjCRNMcaSHoMLD0OEfTo6luNHw8/dqibR5lbsuWpVbfaw9Zp3S2+jh5/D98PCWrMq0xNnlGCL4wcT0oqbqR07oNz/nKDH60dPuZmz2srXxhInvdXv74OHsVl3zk5e3+qrKAAAEHElEQVR4nO2X6ZaiMBCFWV0QwQX3tp33f8oBktqAbsXuczzO3O+PSQxJ3arKFgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4B+lOr7agt/htI1ebcLTXFS51vG2QnbRB5dXx+htheyiaPvpy6tDrePwIkOmMZM39ULq8VR3nEt7Ia21jijau3Kro61kpmfc+VKNFOsZyo4p40hCoVtPVL9UtWfcWkUtbpnc2vK1MZ16pk17Z8SZqi+1KZn6owjGknS+Xn4hJFbtC2ps1nbDcVVXzq5cfSdkXlenqq4jMpsM+uoZIRvrLi1EB4T9RTqiZr17HTdjetkR0hg+/0KItiSc/EhIYt0VqjWiA8L++oiY007FRkzv+aCuL4aFmIC0Th2HtjC37nKJEfSM4dw6i5Cj+9megu+FzIJCV5UQM7NLwqeF1EvPuCXt9SJvOn+piDgOq+COkDRYDwspfcvEWzCZ/UBIaN0lQjaklDLP+avq6Lh5HbzQlj0hazuhCKGAJLkvmL3/AXTGhqVzF4Ul7Xaast9c+9boOFN3Nr21069CN0aml74SQgOHJflq7FHiv/KWO3eRd0gIjb2Q3dn566p17HnMQSFu6HijVKldlqacSzhH5pb7yE/m85dGLX0fmjaRTc756/MRIe6cm7gvF66WyYgtHJBCfLUepcMviulSeW1J1vo+FJBm/fEicv4yy72iQWlJOSE+FN5JbiLqQUJy9QHtBubUv4t3XqqXYGaFdDZ466/DUEj4bEqUEHucWCGd3d0z6privZ3qczG1QpLuBNpf1VBIrBDnh1zfGfKOEHvcEqOuKX7OUp3ok8AIGQ6I99dKR4RDYoVQUY2zpjXh4roJBxl1TfGrTgc35y1E9xj2194eJJfAftIIKaio3F7SdG5fNEeAYsw1JSaTlbuosV2qZX988dfV6vA3LTG5EZJSUTyyCIwQc7/TjDlKliREvFIaIbSfhEv/5uGOqXtV0TWr5doXMiXvyt0kM0Ikd+lZxQ0jjhJvpJp8EWghnHJ892H/pe0psj196vO96glJyGTJ3o0RwiuKA8D3xxFHCZvMw2VGCL+z+G3Cu0/a7FiH+r1+6SaXETInk2XbktlSnbu9q5284O6Sssns6A1br1v5lJdkKyq6Ju46O5cRErOVlDG5EcK5q6zm3HpCSKq+DalV0lc9D0hcbf/VN2kl546QBZtMzWstRBJOXXc5tx4WQhc6sT7XQuQslKcJp0jwZ8dtu61WwnFMZLBUzCtESCm5q08NHuBhIb/GSU5Gel29KSt6917eW0fNxaXX+e2FBKuPVsrt1Xb8BpeP/f56vxsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADA/8JfcsMiQSAT45kAAAAASUVORK5CYII=");
+background-size: auto;
+}
+
+.photoABOUT{
+width: 90%;
+height: 90%;
+object-fit: cover;
+}
+.kefiras{
+  width: 15%;
+}
+ul{
+  text-align: left;
+}

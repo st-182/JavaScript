@@ -1,0 +1,82 @@
+body{
+    background-color: gray;
+}
+h1{
+    color: green;
+    text-align: center;
+}
+table, td{
+    border: 2px dotted blue;
+    background-color: rgb(196, 196, 196);
+    padding: 10px;
+    
+}
+table{
+    border-collapse: collapse;
+}
+.yellow{
+    background-color: yellow;
+    padding: 20px;
+    width:auto;
+}
+.green{
+    background-color: green;
+    padding: 20px;
+}
+
+.red{
+    background-color: red;
+    padding: 20px;
+}
+.white{
+    background-color: white;
+    padding: 20px;
+    width:auto;
+}
+.black{
+    background-color: black;
+    padding: 20px;
+    width:auto;
+}
+.blue{
+    background-color: blue;
+    padding: 20px;
+    width:auto;
+}
+tr.fr{
+    background-color: rgb(13, 126, 107);
+}
+td {
+    text-align: center;
+}
+th{
+    text-align: left;
+    background-color: rgb(0, 156, 109);
+}
+
+
+
+table{
+    width: 100%;
+
+}
+th,td{
+    width: 25%;
+    border: 2px dotted black;
+}
+.animation:hover{
+transform: scale(1.15);
+transition: 1000ms;
+}
+.animation{
+    transition: 1000ms;
+    }
+tr:last-child td:hover{
+    background-color: cyan;
+}
+.first-child{
+    border: 2px solid red ;
+}
+.parentelement .first-child{
+border: 2px solid black;
+}

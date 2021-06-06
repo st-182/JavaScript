@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  padding: 10px;
+}
+
+@keyframes myanimations {
+  0% {
+    background-color: red;
+  }
+  25% {
+    background-color: yellow;
+  }
+  50% {
+    background-color: blue;
+  }
+  75% {
+    background-color: green;
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+h1 {
+  color: white;
+  background-color: black;
+  border-radius: 50px;
+  padding: 0 10px;
+  animation-name: none;
+  animation-duration: 5s;
+}
+
+.cinema {
+  background: url(https://img.kapital.kz/XjUS9kUpL5c/bG9jYWw6Ly8vbGVnYWN5L2ltYWdlcy9mL2IvMS8zL2IvZDdmNGQ5NWYxZjRmMTI4ZjJiOWQzYTk5YmQwLmpwZw) no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/*# sourceMappingURL=style.css.map */
