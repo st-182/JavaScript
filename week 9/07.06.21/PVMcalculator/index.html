@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PVM Calculator (Skaiciuotuvas)</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header></header>
+      <main>
+        <h1>PVM Skaiciuotuvas</h1>
+        <section id="input">
+          <form>
+            <div class="form-group">
+              <label for="input-without-pvm">Suma be PVM</label>
+              <input type="text" name="" id="input-without-pvm" />
+            </div>
+            <div class="form-group">
+              <label for="input-with-pvm">Suma su PVM</label>
+              <select name="PVM" id="input-with-pvm">
+                <option value="21">21%</option>
+                <option value="9">9%</option>
+                <option value="5">5%</option>
+              </select>
+            </div>
+          </form>
+        </section>
+        <section class="output">
+          <p>Suma be PVM</p>
+          <div class="output-div">
+            <span id="without-pvm-output"></span>
+          </div>
+          <p>Suma su PVM</p>
+          <div class="output-div">
+            <span id="with-pvm-output"></span>
+          </div>
+          <p>PVM</p>
+          <div class="output-div">
+            <span id="pvm-output"></span>
+          </div>
+          <p id="error-message"></p>
+        </section>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>
