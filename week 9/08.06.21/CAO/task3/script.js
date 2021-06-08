@@ -1,38 +1,72 @@
-//     Sukurk formą, kuri leis įrašyti vardą - jis bus išsaugojamas į cookies. Jei vardas jau egzistuoja - išmeta tik vardą ir mygtuką, su kuriuo cookies ištrinamas. Jei neegzistuoja - formą.
-const inputElement = document.querySelector(`input`);
-// let nameA = inputElement.value;
-// let name = Aristidas;
+// 3. Sukurkite puslapį, kuriame būtų forma su vienu input - fullName. Įvedus vardą ir pavardę, juos padalina į dvi dalis (name ir surname). Vardą ir pavardę įdeda į objektą, o objektą - į array. Šį array išsaugo localStorage. Po forma, tegul būna lentelė, būtent joje atsivaizduoja informacija iš localStorage array.
+const form = document.querySelector(`form`);
+const fullname = document.querySelector(`input`);
+const btn = document.querySelector(`#btn`);
+let users = [];
+btn.addEventListener(`click`, () => {
+  localStorage.removeItem(`userDatabase`);
+  document.querySelector(`table`).innerHTML = ``;
+  users = [];
 
-function toCookie(e) {
+  console.log(`DONE DELETE`);
+});
+form.addEventListener(`submit`, (e) => {
   e.preventDefault();
-  let nameA = inputElement.value;
-
-  console.log(`working`);
-  console.log(nameA);
-  console.log(document.cookie);
-
-  if (document.cookie === `name=${nameA}`) {
-    document
-      .querySelector(`body`)
-      .appendChild(document.createElement(`p`)).innerText = document.cookie;
-    document
-      .querySelector(`body`)
-      .appendChild(
-        document.createElement(`button`)
-      ).innerText = `Delete cookie`;
-    document
-      .querySelector(`button:last-of-type`)
-      .addEventListener(`click`, function deleteCookie() {
-        document.cookie = `name=${nameA}; expires=Thu, 18 Dec 2013 12:00:00 UTC`;
-      });
+  const clearFullname = fullname.value
+    .trim()
+    .split(` `)
+    .filter((item) => item != ` ` && item != ``);
+  for (item in clearFullname) {
+    clearFullname[item] =
+      clearFullname[item].charAt(0).toUpperCase() +
+      clearFullname[item].slice(1).toLowerCase();
+  }
+  console.log(clearFullname);
+  let user = {};
+  if (clearFullname.length === 2 || clearFullname.length === 3) {
+    user = {
+      name: clearFullname[0],
+      middleName: clearFullname[2] ? clearFullname[1] : null,
+      surname: clearFullname[2] ? clearFullname[2] : clearFullname[1],
+    };
   } else {
-    console.log(nameA);
+    return console.log(
+      `Error, name is not following standards (Name, MiddleName, Surname)`
+    );
+  }
+  console.log(user);
 
-    document.cookie = `name=${nameA}`;
+  users.push(user);
+  console.log(users);
+
+  localStorage.setItem(`userDatabase`, JSON.stringify(users));
+  // JSON.stringify(users);
+  // setTimeout(() => console.clear(), 2000);
+  setTimeout(
+    () => console.log(/*user, users*/ localStorage.getItem(`userDatabase`)),
+    2100
+  );
+  createTable(localStorage.getItem(`userDatabase`));
+});
+document.body.appendChild(document.createElement(`table`));
+function createTable(lsdb) {
+  document.querySelector(`table`).innerHTML = ``;
+  const arrWithObjects = JSON.parse(lsdb);
+  for (item in arrWithObjects) {
+    let name = arrWithObjects[item].name;
+    let middleName = arrWithObjects[item].middleName;
+    let surname = arrWithObjects[item].surname;
+    console.log(name);
+    // document.createElement(`table`)
+    document.querySelector(`table`).appendChild(document.createElement(`tr`));
+    document
+      .querySelector(`tr:last-of-type`)
+      .appendChild(document.createElement(`td`)).textContent = name;
+    document
+      .querySelector(`tr:last-of-type`)
+      .appendChild(document.createElement(`td`)).textContent = middleName;
+    document
+      .querySelector(`tr:last-of-type`)
+      .appendChild(document.createElement(`td`)).textContent = surname;
   }
 }
-
-inputElement.addEventListener(`blur`, toCookie);
-//     Į localStorage, įrašykite savo vardą, pavardę, aprašymą, linkus į FB, G+, Twitter, linką į nuotrauką. Informaciją galite įrašyti per console'ę, arba naudojant kodą projekte pirmą kart užkraunant puslapį. Vėliau susikurkite puslapį, kuris atvaizduos šią informaciją būtent taip:
-
-// 3. Sukurkite puslapį, kuriame būtų forma su vienu input - fullName. Įvedus vardą ir pavardę, juos padalina į dvi dalis (name ir surname). Vardą ir pavardę įdeda į objektą, o objektą - į array. Šį array išsaugo localStorage. Po forma, tegul būna lentelė, būtent joje atsivaizduoja informacija iš localStorage array.
