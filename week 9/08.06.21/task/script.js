@@ -39,4 +39,7 @@ function division(num1, num2) {
   return num1 / num2;
 }
 
+console.log(calculateValue(1, 1, `addition`));
 console.log(calculateValue(1, 1, `subtraction`));
+console.log(calculateValue(2, 2, `multiplication`));
+console.log(calculateValue(9, 2, `division`));
