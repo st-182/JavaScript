@@ -1,93 +1,72 @@
-// Variables
-const usersOutput = document.querySelector("#output");
-// Promises (ES6)
-// --** simple Promise example **--
-// --** more complex Promise example **--
-let simplePromice = new Promise((resolve, reject) => {
-  const userName = `Peter`;
-  if (userName === `Peter`) {
-    resolve({ message: `Success`, name: userName });
+const btn1 = document.querySelector(`#btn1`);
+const btn2 = document.querySelector(`#btn2`);
+const btn3 = document.querySelector(`#btn3`);
+const btn4 = document.querySelector(`#btn4`);
+const btn5 = document.querySelector(`#btn5`);
+const btn6 = document.querySelector(`#btn6`);
+const btn7 = document.querySelector(`#btn7`);
+const output = document.querySelector(`#p`);
+const output2 = document.querySelector(`#p2`);
+
+let i = 0;
+let x = 0;
+function addToLocalStorage() {
+  let name = `Peter`;
+  localStorage.setItem(`user[${i}]`, name);
+  i++;
+}
+function addToLocalStorage2() {
+  let name = `John`;
+  localStorage.setItem(`user[0${x}]`, name);
+  x++;
+}
+function getToLocalStorage() {
+  let dataFromLocalStorage = localStorage.getItem(`user1`);
+  console.log(dataFromLocalStorage);
+  if (dataFromLocalStorage) {
+    output.innerText = dataFromLocalStorage;
   } else {
-    reject(`Failed`);
+    output.innerText = ``;
   }
-});
-console.log(`simplePromice:`);
-simplePromice
-  .then((result) =>
-    console.log(` Message: ${result.message}, name: ${result.name}`)
-  )
-  .catch((error) => console.log(error));
-console.log(`simplePromice: 2222222`);
-console.log(simplePromice);
-// PROBLEM: need to update users lists asynchronously
-const users = [
-  { name: "Peter", surname: "Griffin" },
-  { name: "Lois", surname: "Griffin" },
-  { name: "Chris", surname: "Griffin" },
-  { name: "Meg", surname: "Griffin" },
-  { name: "Stewie", surname: "Griffin" },
-];
-
-// function getUsers() {
-//   setTimeout(() => {
-//     let output = ``;
-
-//     users.forEach((user) => {
-//       output += `
-//             <ul>
-//             <li>Name: ${user.name}</li>
-//             <li>Name: ${user.surname}</li>
-//             </ul>
-//             `;
-//     });
-//     usersOutput.innerHTML = output;
-//   }, 3000);
-// }
-// getUsers();
-
-function getUsersWithPromice() {
-  setTimeout(() => {
-    let output = ``;
-
-    users.forEach((user) => {
-      output += `
-            <ul>
-            <li>Name: ${user.name}</li>
-            <li>Name: ${user.surname}</li>
-            </ul>
-            `;
-    });
-    usersOutput.innerHTML = output;
-  }, 3000);
 }
-getUsersWithPromice();
 
-function crateUserWithPromices(user) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      users.push(user);
-      let success = true;
-      if (success) {
-        resolve();
-      } else {
-        reject(`Error: Unable to add user`);
-      }
-    }, 3000);
-  });
+function deleteFromLocalStorage() {
+  let lastItem =
+    Object.keys(localStorage)[Object.keys(localStorage).length - 1];
+  localStorage.removeItem(lastItem);
 }
-crateUserWithPromices({ name: `Olololo`, surname: `Sasauskas` })
-  .then(getUsersWithPromice)
-  .catch((error) => console.log(error));
-// function crateUser(user, callback) {
-//   setTimeout(() => {
-//     users.push(user);
-//     callback();
-//   }, 3000);
-// }
-// crateUser({ name: `Olololo`, surname: `Sasauskas` }, getUsers);
+function deleteAll() {
+  localStorage.clear();
+}
 
-// --- 1. problem solving using using callbacks (old way)
-// --- 2. problem solving using using Promises (new way)
-// Async / Await
-// --- 2.1 problem solving using using Async/await (new way)
-// ---- Async / Await / Fetch
+function addObjectToLocalStorage() {
+  let user = {
+    name: `John`,
+    surname: `Smith`,
+    age: 32,
+  };
+  localStorage.setItem(`user`, JSON.stringify(user));
+}
+function gettingObjectFromLocalStorage() {
+  if (localStorage.getItem(`user`)) {
+    let data = JSON.parse(localStorage.getItem(`user`));
+    output2.innerHTML = `
+    <ul>
+        <li>Name: ${data.name}</li>
+        <li>Surname: ${data.surname}</li>
+        <li>Age: ${data.age}</li>
+    </ul>
+    `;
+  } else {
+    outputTwo.innerText = `User is not in local storage`;
+  }
+}
+btn1.addEventListener(`click`, addToLocalStorage);
+btn2.addEventListener(`click`, getToLocalStorage);
+btn3.addEventListener(`click`, deleteFromLocalStorage);
+btn4.addEventListener(`click`, addToLocalStorage2);
+btn5.addEventListener(`click`, deleteAll);
+btn6.addEventListener(`click`, addObjectToLocalStorage);
+btn7.addEventListener(`click`, gettingObjectFromLocalStorage);
+
+localStorage.getItem;
