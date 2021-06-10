@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script defer src="/fetch/script.js"></script>
   </head>
   <body>
     <header>
@@ -23,7 +24,23 @@
         <h1>Page Headline</h1>
       </section>
       <section>
-        <div id="output"></div>
+        <h1></h1>
+        <p id="joke"></p>
+      </section>
+      <section>
+        <h2>Select Chuck Norris joke by category</h2>
+        <form>
+          <label for="joke-category">Select Joke Category</label>
+          <select name="joke-category" id="joke-category">
+            <option value="animal">Animal</option>
+            <option value="career">Career</option>
+            <option value="celebrity">Celebrity</option>
+            <option value="dev">Dev</option>
+            <option value="fasion">Fasion</option>
+          </select>
+          <input type="submit" value="Get me a joke!" name="" id="" />
+        </form>
+        <p id="single-joke-by-category"></p>
       </section>
     </main>
     <footer>
