@@ -1,0 +1,132 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+/* adding fonts */
+h1,
+p,
+input,
+label,
+th,
+td {
+  font-family: "Open Sans", sans-serif;
+}
+/* css variables */
+:root {
+  --primary-color: #457b9d;
+  --secondary-color: #1d3557;
+  --light-color: #fff;
+  --dark-color: #000;
+}
+/* ----- Adding Style ----- */
+/* Mobile first */
+main {
+  width: calc(100vw - calc(100vw - 100%));
+  /*viewport width - scroll bar width */
+  min-height: 100vh;
+  background-color: var(--light-color);
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+main .wrapper {
+  /* min-height: 80%; */
+  width: 95%;
+  background-color: var(--primary-color);
+  margin: 3em auto;
+  padding: 1.5em;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5); /*var(--dark-color)*/
+  transition: 500ms;
+  border-radius: 10px;
+}
+main .wrapper:hover {
+  box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.7);
+}
+main .wrapper .input-section h1 {
+  padding: 0.7em 0;
+  text-align: center;
+  color: var(--light-color);
+  font-size: 2em;
+}
+main .wrapper .input-section form {
+  /* background-color: red; */
+  display: flex;
+  flex-wrap: wrap;
+}
+main .wrapper .input-section form .form-field {
+  width: 50%;
+  padding-top: 1.5em;
+  padding-right: 2em;
+  display: flex;
+  flex-direction: column;
+}
+main .wrapper .input-section form .form-field label {
+  font-size: 1.2em;
+  color: var(--light-color);
+}
+main .wrapper .input-section form .form-field input {
+  margin-top: 0.5em;
+  padding: 0.5em;
+  background-color: var(--primary-color);
+  border: 0;
+  border-bottom: 1px solid var(--light-color);
+  color: var(--light-color);
+}
+main .wrapper .input-section form .form-field input[type="text"],
+main .wrapper .input-section form .form-field input[type="email"] {
+  border-bottom: 2px solid var(--light-color);
+}
+main .wrapper .input-section form .form-field input:focus {
+  outline: none;
+}
+main .wrapper .input-section #error-message {
+  color: var(--light-color);
+  padding: 1em;
+}
+main .wrapper .input-section form .form-field input[type="submit"] {
+  background-color: var(--light-color);
+  color: var(--primary-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0.7em 1em;
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
+}
+main .wrapper .input-section form .form-field input[type="submit"]:focus {
+  cursor: pointer;
+  color: var(--light-color);
+  background-color: var(--secondary-color);
+}
+
+/* FORMA */
+main .wrapper .output-section {
+  margin-top: 2em;
+  overflow-x: auto;
+}
+main .wrapper .output-section table {
+  background-color: var(--light-color);
+  width: 100%;
+  padding: 0.7em;
+  text-align: center;
+}
+
+main .wrapper .output-section table thead tr th {
+  width: 25%;
+  padding: 0.3em 0.5em;
+  /* border-bottom: 1px solid var(--primary-color); */
+}
+main .wrapper .output-section table thead tr td {
+  width: 25%;
+  text-align: center;
+  padding: 0.3em 0.5em;
+}
+/* Tablet */
+@media screen and (min-width: 800px) {
+  main .wrapper {
+    width: 800px;
+  }
+}

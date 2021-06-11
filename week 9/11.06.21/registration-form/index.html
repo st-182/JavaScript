@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section class="wrapper">
+        <section class="input-section">
+          <h1>REGISTRATION FORM / REGISTRACIJOS FORMA</h1>
+          <form>
+            <div class="form-field">
+              <label for="name">Name/Vardas</label>
+              <input type="text" id="name" />
+            </div>
+            <div class="form-field">
+              <label for="Surname">Surname/Pavarde</label>
+              <input type="text" id="surname" />
+            </div>
+            <div class="form-field">
+              <label for="email">Email/El. pastas</label>
+              <input type="text" id="email" />
+            </div>
+            <div class="form-field">
+              <label for="birthdate">Birth date/Gimimo metai</label>
+              <input type="text" id="birthdate" />
+            </div>
+            <div class="form-field">
+              <input type="submit" value="Register / Registruotis" />
+            </div>
+          </form>
+          <p id="error-message"></p>
+        </section>
+        <section class="output-section">
+          <table>
+            <thead>
+              <tr>
+                <th>Name/Vardas</th>
+                <th>Surname/Pavarde</th>
+                <th>Email/El. pastas</th>
+                <th>Birth date/Gimimo metai</th>
+              </tr>
+            </thead>
+            <tbody id="table-output">
+              <tr>
+                <td>Aristidas</td>
+                <td>Jasudas</td>
+                <td>sample@email.com</td>
+                <td>1998-03-08</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+</html>
