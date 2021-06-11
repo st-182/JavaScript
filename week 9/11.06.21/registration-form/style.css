@@ -95,6 +95,7 @@ main .wrapper .input-section form .form-field input[type="submit"] {
   text-transform: uppercase;
   padding: 0.7em 1em;
   box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 main .wrapper .input-section form .form-field input[type="submit"]:focus {
   cursor: pointer;
@@ -106,6 +107,7 @@ main .wrapper .input-section form .form-field input[type="submit"]:focus {
 main .wrapper .output-section {
   margin-top: 2em;
   overflow-x: auto;
+  border-radius: 10px;
 }
 main .wrapper .output-section table {
   background-color: var(--light-color);
