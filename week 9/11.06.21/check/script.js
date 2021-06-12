@@ -1,5 +1,5 @@
 // Products data from API
-const PRODUCTS_ENDPOINT = "products.json";
+const PRODUCTS_ENDPOINT = 'products.json';
 
 // ----- OOP -----
 // ---------------
@@ -7,7 +7,7 @@ const PRODUCTS_ENDPOINT = "products.json";
 // PIRMAS BŪDAS
 // Variables
 // -- DOM elements
-const productsElement = document.querySelector("#products");
+const productsElement = document.querySelector('#products');
 
 // -- data (stores products from PRODUCTS_ENDPOINT)
 let products = [];
@@ -22,12 +22,11 @@ class SHOP {
   }
 
   static createProduct(product) {
-    console.log(product);
     let shopItem = `
       <div>
         <img src="${product.image}">
         <h3>${product.title}</h3>
-        <p>${product.category.join(",")}</p>
+        <p>${product.category.join(',')}</p>
         <p>${product.price}</p>
       </div>
       `;
@@ -36,10 +35,9 @@ class SHOP {
   }
 
   render() {
-    let output = "";
-    console.log(this.array);
+    let output = '';
+
     for (let product of this.array) {
-      console.log(product);
       output += SHOP.createProduct(product);
     }
 
@@ -48,8 +46,8 @@ class SHOP {
 }
 
 // Events
-window.addEventListener("load", () => {
-  console.log("a");
+window.addEventListener('load', () => {
+  console.log('a');
   let shop = new SHOP(productsElement, products);
   shop.render();
 });
