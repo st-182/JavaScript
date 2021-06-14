@@ -4,16 +4,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
     <title>Hypeformat</title>
     <!-- CUSTOM JS -->
     <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header></header>
 
     <main>
       <section>
-        <section id="filer">Filter</section>
+        <section class="upper-bar">
+          <div class="upper-left">
+            <a href="#">Home</a>
+            <span>/</span>
+            <a href="#">Shop</a>
+          </div>
+          <div class="shop">
+            <h2>Shop</h2>
+            <div class="line flex">
+              <div class="filter-button flex">
+                <a href="#"><i class="fas fa-bars"></i> Filter</a>
+                <p>Showing 1-16 of 99 results</p>
+              </div>
+              <select name="" id="">
+                <option value="">Sort by Popularity</option>
+                <option value="">Sort by Name</option>
+                <option value="">Sort by Price (cheap first)</option>
+                <option value="">Sort by Price (expensive first)</option>
+              </select>
+            </div>
+          </div>
+        </section>
         <section id="products"></section>
       </section>
     </main>

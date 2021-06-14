@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+:root {
+  --width: 800px;
+  --radius: 5px;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.upper-bar {
+  /* width: 100%; */
+  max-width: var(--width);
+  margin: 0 auto;
+}
+.filter-button {
+  gap: 10px;
+}
+.item {
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  /* background-color: rgb(228, 228, 228); */
+}
+#products {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 0 auto;
+  max-width: var(--width);
+}
+#products .item img {
+  width: 100%;
+  object-fit: cover;
+}
+#products .item h3,
+#products .item p {
+  width: 80%;
+  margin: 0 auto;
+  padding: 5px 0;
+}
+
+button,
+select {
+  font-family: "Open Sans", sans-serif;
+}
+.filter-button a {
+  text-decoration: none;
+  background-color: red;
+  border-radius: var(--radius);
+  color: white;
+  padding: 0 25px;
+  font-size: 20px;
+  letter-spacing: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.filter-button a:active {
+  background-color: rgb(145, 106, 106);
+}
+.line {
+  margin: 10px 0;
+}
+.line select {
+  background-color: transparent;
+  border: 1px solid gray;
+  border-radius: var(--radius);
+}
