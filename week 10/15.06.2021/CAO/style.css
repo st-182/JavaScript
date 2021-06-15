@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: white;
+}
+body {
+  background-color: rgb(216, 216, 216);
+}
+#output {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 10px;
+}
+.item {
+  border: 1px solid black;
+}
+.item img {
+  width: 100%;
+}
+footer {
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

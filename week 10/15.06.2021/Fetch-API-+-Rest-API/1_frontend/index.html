@@ -10,6 +10,15 @@
       input[type="text"] {
         width: 125px;
       }
+      #adverts-list {
+        display: flex;
+      }
+      #adverts-list div {
+        width: calc(100% / 3 - 10px);
+        margin: 5px;
+        padding: 10px;
+        background-color: #f4f4f4;
+      }
     </style>
   </head>
   <body>
@@ -18,7 +27,7 @@
       <h1>Adverts</h1>
       <section>
         <h3>Add Adverts</h3>
-        <form action="">
+        <form>
           <label for="name">Name</label>
           <input type="text" id="name" />
 
@@ -30,6 +39,7 @@
 
           <input type="submit" />
         </form>
+        <p id="message"></p>
       </section>
       <section>
         <h3>List of items</h3>
