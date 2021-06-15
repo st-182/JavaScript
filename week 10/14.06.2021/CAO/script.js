@@ -9,6 +9,7 @@ let carsArray = [];
 let output = ``;
 
 const myPromise = new Promise((resolve, reject) => {
+  // have to be changed to addEventListner -> DOMContetntLoaded
   fetch(autoURL)
     .then((response) => response.json())
     .then((data) => {
