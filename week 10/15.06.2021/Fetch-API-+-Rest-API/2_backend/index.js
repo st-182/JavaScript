@@ -26,15 +26,41 @@ app.get(`/adverts/:id`, (req, res) => {
 });
 // POST
 app.post(`/adverts`, (req, res) => {
-  let number = adverts[adverts.length - 1].id + 1;
+  let id = adverts[adverts.length - 1].id + 1;
   adverts.push({ id, ...req.body });
   // adverts.push(req.body);
-  res.send(adverts);
+  res.send({ data: adverts, message: `New adverts added` });
   // res.send(adverts.filter((item) => item.id === +req.params.id));
 });
-
+// PUT
+app.put(`/adverts/:id`, (req, res) => {
+  let updatedAdvert = req.body;
+  let advertID = +req.params.id;
+  let updatedAdverts = adverts.map((advert) => {
+    if (advert.id === advertID) {
+      return { ...updatedAdvert };
+    } else {
+      return advert;
+    }
+  });
+  adverts.length = 0;
+  adverts.push(...updatedAdverts);
+  res.send({ data: updatedAdverts, message: "Advert updated!" });
+  // res.send(adverts.filter((item) => item.id === +req.params.id));
+});
 // Teorija apie Rest API ir CRUD
-
+app.delete(`/adverts/:id`, (req, res) => {
+  let advertID = +req.params.id;
+  let updatedAdverts = adverts.reduce((newArr, currentItem) => {
+    if (currentItem.id !== advertID) {
+      newArr.push(currentItem);
+      return newArr;
+    }
+  }, []);
+  adverts.length = 0;
+  adverts.push(...updatedAdverts);
+  res.send({ data: updatedAdverts, message: "Advert deleted!" });
+});
 // C - create | method POST
 // R - read   | method GET
 // U - update | method PUT/PATCH
