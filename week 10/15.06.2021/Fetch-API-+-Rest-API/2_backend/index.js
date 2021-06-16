@@ -49,13 +49,11 @@ app.put(`/adverts/:id`, (req, res) => {
   // res.send(adverts.filter((item) => item.id === +req.params.id));
 });
 // Teorija apie Rest API ir CRUD
-app.delete(`/adverts/:id`, (req, res) => {
+app.delete("/adverts/:id", (req, res) => {
   let advertID = +req.params.id;
   let updatedAdverts = adverts.reduce((newArr, currentItem) => {
-    if (currentItem.id !== advertID) {
-      newArr.push(currentItem);
-      return newArr;
-    }
+    if (currentItem.id !== advertID) newArr.push(currentItem);
+    return newArr;
   }, []);
   adverts.length = 0;
   adverts.push(...updatedAdverts);
