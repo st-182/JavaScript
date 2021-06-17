@@ -26,7 +26,9 @@ app.get(`/adverts/:id`, (req, res) => {
 });
 // POST
 app.post(`/adverts`, (req, res) => {
-  let id = adverts[adverts.length - 1].id + 1;
+  // let id = adverts[adverts.length - 1].id + 1;
+  let id = adverts.length === 0 ? 1 : adverts[adverts.length - 1].id + 1;
+
   adverts.push({ id, ...req.body });
   // adverts.push(req.body);
   res.send({ data: adverts, message: `New adverts added` });

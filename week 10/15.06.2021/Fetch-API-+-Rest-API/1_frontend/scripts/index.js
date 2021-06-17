@@ -87,13 +87,16 @@ function updateAdvert(e) {
 
 //DELETE data
 function deleteAdvert(e) {
-  return fetch(ALL_ADVERTS + e.target.dataset.id, {
+  return fetch(ALL_ADVERTS + `/ ${e.target.dataset.id}`, {
     method: "DELETE",
   })
     .then((response) => response.json())
     .then((data) => {
-      successErrorMessage.innerText = data.message;
-      getAndShowAdverts();
+      messageElement.innerText = data.message;
+      getAndSHowAllAdverts();
+      setTimeout(() => {
+        // location.reload();
+      }, 1000);
     });
 }
 
