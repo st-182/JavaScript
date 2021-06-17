@@ -1,0 +1,23 @@
+Post http://64.227.127.73/skills
+Content-Type: application/json
+
+{
+  "title": "React",
+  "level": 95
+}
+
+###
+Get http://64.227.127.73/skills
+###
+Get http://64.227.127.73/experiences
+### 
+Post http://64.227.127.73/experiences
+Content-Type: application/json 
+
+{
+  "companyName": "Google LTD",
+  "position": "Sinior",
+  "startYear": 2020,
+  "finishYear": 2021,
+  "description": "Now I work in Google (USA), I've got a good offer)"
+}
