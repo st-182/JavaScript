@@ -24,7 +24,9 @@ fetch(`../data/JS_questions.json`)
 const startQuiz = () => {
   startBtnElement.classList.add(`hide`);
   quizQuestionElement.classList.remove(`hide`);
-
+  if (!resultElement.classList.contains("hide")) {
+    resultElement.classList.add("hide");
+  }
   // - reseting scores and index (index represents quiz question in .json)
   scoreCorrect = 0;
   scoreIncorrect = 0;
@@ -33,6 +35,7 @@ const startQuiz = () => {
 };
 
 const setNextQuestion = () => {
+  resetButtons();
   showNextQuestion(questions[index]);
   index++;
 };
@@ -40,16 +43,20 @@ const setNextQuestion = () => {
 const selectAnswer = (e) => {
   let correct = e.target.dataset.correct;
   if (correct) {
+    // add css syling to button
     e.target.classList.add(`correct`);
+    // add green check mark
     if (e.target.childNodes.length === 1)
       e.target.innerHTML += ` <i class="fas fa-check-circle"></i>`;
+    // disabling buttons after ckiking on right answer
     Array.from(answerBtnsElement.children).forEach(
       (btn) => (btn.disabled = true)
     );
     console.log(questions.length);
     console.log(index + 1);
-
+    // adding point to score
     scoreCorrect++;
+
     if (questions.length > index + 1) {
       nextBtnElement.classList.remove(`hide`);
 
@@ -62,15 +69,16 @@ const selectAnswer = (e) => {
       resultElement.classList.remove("hide");
       resultElement.innerText = `Your score is ${
         scoreCorrect - scoreIncorrect
-      }points, meaning you have ${scoreCorrect} correct answers and ${scoreIncorrect} incorrect ones from ${
+      } points, meaning you have ${scoreCorrect} correct answers and ${scoreIncorrect} incorrect ones from ${
         questions.length
-      } questions`;
+      } questions.`;
     }
   } else {
     e.target.classList.add(`wrong`);
     if (e.target.childNodes.length === 1)
       e.target.innerHTML += ` <i class="fas fa-times-circle"></i>`;
     scoreIncorrect++;
+    console.log(answerBtnsElement.firstChild);
   }
 };
 
@@ -88,6 +96,15 @@ const showNextQuestion = (question) => {
     answerBtnsElement.appendChild(button);
   });
   // console.log(question.question);
+};
+
+//
+const resetButtons = () => {
+  nextBtnElement.classList.add("hide");
+
+  while (answerBtnsElement.firstChild) {
+    answerBtnsElement.removeChild(answerBtnsElement.firstChild);
+  }
 };
 
 // Events

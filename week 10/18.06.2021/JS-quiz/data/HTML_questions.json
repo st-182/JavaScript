@@ -1,0 +1,83 @@
+[
+  {
+    "question": "HTML stands for what?",
+    "answers": [
+      {
+        "text": "Hypertrophic Management Language",
+        "correct": false
+      },
+      {
+        "text": "Hyperberic Tertiary Logrithm",
+        "correct": false
+      },
+      {
+        "text": "Hypertext Markup Language",
+        "correct": true
+      },
+      {
+        "text": "Hyperresonant Marginal Logrithm",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Every HTML document should have what?",
+    "answers": [
+      {
+        "text": "A head section, and within it a title, followed by a body",
+        "correct": false
+      },
+      {
+        "text": "A body and header",
+        "correct": false
+      },
+      {
+        "text": "A title section, and within it a header, followed by a body",
+        "correct": true
+      },
+      {
+        "text": "None of these",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "A head section is visible to a person viewing the Web page.",
+    "answers": [
+      {
+        "text": "True",
+        "correct": true
+      },
+      {
+        "text": "False",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Every Web page opens with HTML",
+    "answers": [
+      {
+        "text": "True",
+        "correct": true
+      },
+      {
+        "text": "False",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Every Web page closes with ......body",
+    "answers": [
+      {
+        "text": "True",
+        "correct": true
+      },
+      {
+        "text": "False",
+        "correct": false
+      }
+    ]
+  }
+]
