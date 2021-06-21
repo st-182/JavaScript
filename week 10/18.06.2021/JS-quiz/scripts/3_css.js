@@ -52,12 +52,12 @@ const selectAnswer = (e) => {
     Array.from(answerBtnsElement.children).forEach(
       (btn) => (btn.disabled = true)
     );
-    console.log(questions.length);
-    console.log(index + 1);
+    // console.log(questions.length);
+    // console.log(index + 1);
     // adding point to score
     scoreCorrect++;
 
-    if (questions.length > index + 1) {
+    if (questions.length > index) {
       nextBtnElement.classList.remove(`hide`);
 
       // nextBtnElement.classList.add(`next-btn`);
@@ -78,7 +78,7 @@ const selectAnswer = (e) => {
     if (e.target.childNodes.length === 1)
       e.target.innerHTML += ` <i class="fas fa-times-circle"></i>`;
     scoreIncorrect++;
-    console.log(answerBtnsElement.firstChild);
+    // console.log(answerBtnsElement.firstChild);
   }
 };
 
@@ -90,7 +90,7 @@ const showNextQuestion = (question) => {
   question.answers.forEach((answer) => {
     const button = document.createElement(`button`);
     button.innerText = answer.text;
-    button.classList.add(`btn`, `btn-js`);
+    button.classList.add(`btn`, `btn-css`);
     if (answer.correct) button.dataset.correct = answer.correct;
     button.addEventListener(`click`, selectAnswer);
     answerBtnsElement.appendChild(button);

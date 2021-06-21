@@ -1,6 +1,6 @@
 [
   {
-    "question": "HTML stands for what?",
+    "question": "What does HTML stand for?",
     "answers": [
       {
         "text": "Hypertrophic Management Language",
@@ -21,61 +21,85 @@
     ]
   },
   {
-    "question": "Every HTML document should have what?",
+    "question": "HTML is what type of language ?",
     "answers": [
       {
-        "text": "A head section, and within it a title, followed by a body",
+        "text": "Scripting Language",
         "correct": false
       },
       {
-        "text": "A body and header",
+        "text": "Programming Language",
         "correct": false
       },
       {
-        "text": "A title section, and within it a header, followed by a body",
+        "text": "Markup Language",
         "correct": true
       },
       {
-        "text": "None of these",
+        "text": "Network Protocol",
         "correct": false
       }
     ]
   },
   {
-    "question": "A head section is visible to a person viewing the Web page.",
+    "question": "Fundamental HTML Block is known as ___________. ",
     "answers": [
       {
-        "text": "True",
+        "text": "HTML Body",
+        "correct": false
+      },
+      {
+        "text": "HTML Attribute",
+        "correct": false
+      },
+      {
+        "text": "HTML Element",
+        "correct": false
+      },
+      {
+        "text": "HTML Tag",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Apart from <b> tag, what other tag makes text bold ? ",
+    "answers": [
+      {
+        "text": "<fat>",
+        "correct": false
+      },
+      {
+        "text": "<black>",
+        "correct": false
+      },
+      {
+        "text": "<strong>",
         "correct": true
       },
       {
-        "text": "False",
+        "text": "<emp>",
         "correct": false
       }
     ]
   },
   {
-    "question": "Every Web page opens with HTML",
+    "question": "Tags and texts that are not directly displayed on the page are written in _____ section. ",
     "answers": [
       {
-        "text": "True",
+        "text": "<head>",
         "correct": true
       },
       {
-        "text": "False",
+        "text": "<body>",
         "correct": false
-      }
-    ]
-  },
-  {
-    "question": "Every Web page closes with ......body",
-    "answers": [
-      {
-        "text": "True",
-        "correct": true
       },
       {
-        "text": "False",
+        "text": "<title>",
+        "correct": false
+      },
+      {
+        "text": "<html>",
         "correct": false
       }
     ]
