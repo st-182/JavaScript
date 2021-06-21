@@ -1,29 +1,38 @@
 // !Variables
-// - DOM elements                    in this case import is used for test purposes only
-import {
-  startBtnElement,
-  nextBtnElement,
-  quizQuestionElement,
-  questionElement,
-  answerBtnsElement,
-  resultElement,
-  scoreElement,
-} from "./modules/DOM_Elements.js";
+// - DOM elements
+const startBtnElement = document.querySelector(`#start-btn`);
+const nextBtnElement = document.querySelector(`#next-btn`);
+const quizQuestionElement = document.querySelector(`#quiz__question`);
+const questionElement = document.querySelector(`#question`);
+const answerBtnsElement = document.querySelector(`#answer-btns`);
+const resultElement = document.querySelector(`#result`);
+const scoreElement = document.querySelector(`#score-corner`);
 
-// - program's logic                  there is no reason for using import
-export let questions = [];
-export let index;
-export let scoreCorrect = 0;
-export let scoreIncorrect = 0;
+// - program's logic
+let questions = [];
+let index;
+let scoreCorrect = 0;
+let scoreIncorrect = 0;
 
 // !Getting data for quiz from .json data file and pushing them into "questions" array
-import fetchFunction from "./modules/fetch.js"; // in my opinion this import is worth it)
-fetchFunction(`../data/JS_questions.json`);
+fetch(`../data/JS_questions.json`)
+  .then((response) => response.json())
+  .then((data) => questions.push(...data));
 
 // Functions
 // - starting quiz (after pressing "START QUIZ")
-import start from "./modules/start.js";
-start();
+const startQuiz = () => {
+  startBtnElement.classList.add(`hide`);
+  quizQuestionElement.classList.remove(`hide`);
+  if (!resultElement.classList.contains("hide")) {
+    resultElement.classList.add("hide");
+  }
+  // - reseting scores and index (index represents quiz question in .json)
+  scoreCorrect = 0;
+  scoreIncorrect = 0;
+  index = 0;
+  setNextQuestion();
+};
 
 const setNextQuestion = () => {
   resetButtons();
