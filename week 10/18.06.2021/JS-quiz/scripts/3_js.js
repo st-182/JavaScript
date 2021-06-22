@@ -12,9 +12,9 @@ import {
 
 // - program's logic                  there is no reason for using import
 export let questions = [];
-export let index;
-export let scoreCorrect = 0;
-export let scoreIncorrect = 0;
+let index;
+let scoreCorrect = 0;
+let scoreIncorrect = 0;
 
 // !Getting data for quiz from .json data file and pushing them into "questions" array
 import fetchFunction from "./modules/fetch.js"; // in my opinion this import is worth it)
@@ -22,12 +22,22 @@ fetchFunction(`../data/JS_questions.json`);
 
 // Functions
 // - starting quiz (after pressing "START QUIZ")
-import start from "./modules/start.js";
-start();
+const startQuiz = () => {
+  startBtnElement.classList.add(`hide`);
+  quizQuestionElement.classList.remove(`hide`);
+  if (!resultElement.classList.contains("hide")) {
+    resultElement.classList.add("hide");
+  }
+  // - reseting scores and index (index represents quiz question in .json)
+  scoreCorrect = 0;
+  scoreIncorrect = 0;
+  index = 0;
+  setNextQuestion();
+};
 
 const setNextQuestion = () => {
   resetButtons();
-  showNextQuestion(questions[index]);
+  showNextQuestion(questions[index], `btn-js`, selectAnswer);
   index++;
 };
 
@@ -76,19 +86,7 @@ const selectAnswer = (e) => {
 // -- showing question and answers from questions array
 const showQuestion = () => {};
 
-const showNextQuestion = (question) => {
-  questionElement.textContent = question.question;
-  question.answers.forEach((answer) => {
-    const button = document.createElement(`button`);
-    button.innerText = answer.text;
-    button.classList.add(`btn`, `btn-js`);
-    if (answer.correct) button.dataset.correct = answer.correct;
-    button.addEventListener(`click`, selectAnswer);
-    answerBtnsElement.appendChild(button);
-  });
-  // console.log(question.question);
-};
-
+import { showNextQuestion } from "./modules/showNextQuestion.js";
 //
 const resetButtons = () => {
   nextBtnElement.classList.add("hide");
