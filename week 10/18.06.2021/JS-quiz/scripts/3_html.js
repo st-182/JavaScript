@@ -18,7 +18,7 @@ let scoreIncorrect = 0;
 
 // !Getting data for quiz from .json data file and pushing them into "questions" array
 import fetchFunction from "./modules/fetch.js"; // in my opinion this import is worth it)
-fetchFunction(`../data/HTML_questions.json`);
+fetchFunction(`../data/HTML_questions.json`, questions);
 
 // Functions
 // - starting quiz (after pressing "START QUIZ")
