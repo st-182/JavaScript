@@ -1,23 +1,24 @@
 // !Variables
 // - DOM elements
-const startBtnElement = document.querySelector(`#start-btn`);
-const nextBtnElement = document.querySelector(`#next-btn`);
-const quizQuestionElement = document.querySelector(`#quiz__question`);
-const questionElement = document.querySelector(`#question`);
-const answerBtnsElement = document.querySelector(`#answer-btns`);
-const resultElement = document.querySelector(`#result`);
-const scoreElement = document.querySelector(`#sore-corner`);
+import {
+  startBtnElement,
+  nextBtnElement,
+  quizQuestionElement,
+  questionElement,
+  answerBtnsElement,
+  resultElement,
+  scoreElement,
+} from "./modules/DOM_Elements.js";
 
 // - program's logic
-let questions = [];
+export let questions = [];
 let index;
 let scoreCorrect = 0;
 let scoreIncorrect = 0;
 
 // !Getting data for quiz from .json data file and pushing them into "questions" array
-fetch(`../data/HTML_questions.json`)
-  .then((response) => response.json())
-  .then((data) => questions.push(...data));
+import fetchFunction from "./modules/fetch.js"; // in my opinion this import is worth it)
+fetchFunction(`../data/HTML_questions.json`);
 
 // Functions
 // - starting quiz (after pressing "START QUIZ")
@@ -36,7 +37,7 @@ const startQuiz = () => {
 
 const setNextQuestion = () => {
   resetButtons();
-  showNextQuestion(questions[index]);
+  showNextQuestion(questions[index], `btn-html`, selectAnswer);
   index++;
 };
 
@@ -85,18 +86,7 @@ const selectAnswer = (e) => {
 // -- showing question and answers from questions array
 const showQuestion = () => {};
 
-const showNextQuestion = (question) => {
-  questionElement.textContent = question.question;
-  question.answers.forEach((answer) => {
-    const button = document.createElement(`button`);
-    button.innerText = answer.text;
-    button.classList.add(`btn`, `btn-html`);
-    if (answer.correct) button.dataset.correct = answer.correct;
-    button.addEventListener(`click`, selectAnswer);
-    answerBtnsElement.appendChild(button);
-  });
-  // console.log(question.question);
-};
+import { showNextQuestion } from "./modules/showNextQuestion.js";
 
 //
 const resetButtons = () => {
