@@ -12,12 +12,12 @@ async function doIt(e) {
   if (search.length > 3) {
     //fetch
     await fetch(`https://api.chucknorris.io/jokes/search?query=${search}`)
-      .then((responce) => {
-        // console.log(responce.status);
-        responce.status !== 200
+      .then((response) => {
+        // console.log(response.status);
+        response.status !== 200
           ? (outputUL.innerHTML = `<li>ERROR</li>`)
           : null;
-        return responce.json();
+        return response.json();
       })
       .then((data) => {
         dataArray = [];

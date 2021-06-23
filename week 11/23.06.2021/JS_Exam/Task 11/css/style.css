@@ -1,0 +1,27 @@
+body {
+  width: calc(100vw - (100vw - 100%));
+}
+header {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+main h1 {
+  padding-left: 5%;
+  padding-top: 5%;
+}
+.custom-width {
+  max-width: 90%;
+  margin: 50px auto;
+}
+.custom-width img {
+  width: 100%;
+}
+
+thead {
+  text-align: center;
+}
+#output .item td:nth-child(2) {
+  text-align: center;
+}
+#output .item td:nth-child(3) {
+  text-align: right;
+}
