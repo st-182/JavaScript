@@ -1,11 +1,9 @@
-/* main {
-  height: 70vh;
-} */
 .logo {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  text-align: center;
 }
 
 /* Code Pen moving divs */

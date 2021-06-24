@@ -26,26 +26,26 @@ function makeNewPosition() {
   return [nh, nw];
 }
 
-// setTimeout(() => {
-//   for (let child of document.querySelector(`.animation-logos`).children) {
-//     let oldHeight = child.getBoundingClientRect().y.toFixed(3);
-//     let oldwidth = child.getBoundingClientRect().x.toFixed(3);
-//     setInterval(() => {
-//       animateDiv();
-//     }, 1000);
-//     function animateDiv() {
-//       const newq = makeNewPosition();
-//       child.animate(
-//         [
-//           { top: `${oldHeight}px`, left: `${oldwidth}px` },
-//           { top: `${newq[0]}px`, left: `${newq[1]}px` },
-//         ],
-//         {
-//           duration: 1000,
-//         }
-//       );
-//       oldHeight = newq[0];
-//       oldwidth = newq[1];
-//     }
-//   }
-// }, 3000);
+setTimeout(() => {
+  for (let child of document.querySelector(`.animation-logos`).children) {
+    let oldHeight = child.getBoundingClientRect().y.toFixed(3);
+    let oldwidth = child.getBoundingClientRect().x.toFixed(3);
+    setInterval(() => {
+      animateDiv();
+    }, 1500);
+    function animateDiv() {
+      const newq = makeNewPosition();
+      child.animate(
+        [
+          { top: `${oldHeight}px`, left: `${oldwidth}px` },
+          { top: `${newq[0]}px`, left: `${newq[1]}px` },
+        ],
+        {
+          duration: 1500,
+        }
+      );
+      oldHeight = newq[0];
+      oldwidth = newq[1];
+    }
+  }
+}, 3000);

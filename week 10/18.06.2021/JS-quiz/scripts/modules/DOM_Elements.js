@@ -5,3 +5,4 @@ export const questionElement = document.querySelector(`#question`);
 export const answerBtnsElement = document.querySelector(`#answer-btns`);
 export const resultElement = document.querySelector(`#result`);
 export const scoreElement = document.querySelector(`#score-corner`);
+export const containerElement = document.querySelector(`.container`);

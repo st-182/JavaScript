@@ -8,6 +8,7 @@ import {
   answerBtnsElement,
   resultElement,
   scoreElement,
+  containerElement,
 } from "./modules/DOM_Elements.js";
 
 // - program's logic                  there is no reason for using import
@@ -24,7 +25,10 @@ fetchFunction(`../data/JS_questions.json`, questions);
 // - starting quiz (after pressing "START QUIZ")
 const startQuiz = () => {
   startBtnElement.classList.add(`hide`);
+  questionElement.classList.remove(`hide`);
   quizQuestionElement.classList.remove(`hide`);
+  nextBtnElement.classList.add(`visibility`);
+  nextBtnElement.classList.remove(`hide`);
   if (!resultElement.classList.contains("hide")) {
     resultElement.classList.add("hide");
   }
@@ -60,19 +64,11 @@ const selectAnswer = (e) => {
 
     if (questions.length > index) {
       nextBtnElement.classList.remove(`hide`);
+      nextBtnElement.classList.remove(`visibility`);
 
       // nextBtnElement.classList.add(`next-btn`);
     } else {
-      startBtnElement.innerText = "RESTART QUIZ";
-      startBtnElement.classList.remove("hide");
-      nextBtnElement.classList.add(`hide`);
-
-      resultElement.classList.remove("hide");
-      resultElement.innerText = `Your score is ${
-        scoreCorrect - scoreIncorrect
-      } points, meaning you have ${scoreCorrect} correct answers and ${scoreIncorrect} incorrect ones from ${
-        questions.length
-      } questions.`;
+      quizEnded();
     }
   } else {
     e.target.classList.add(`wrong`);
@@ -84,13 +80,110 @@ const selectAnswer = (e) => {
 };
 
 // -- showing question and answers from questions array
-const showQuestion = () => {};
+const quizEnded = () => {
+  startBtnElement.innerText = "RESTART QUIZ";
+  startBtnElement.classList.remove("hide");
+  nextBtnElement.classList.add(`hide`);
+
+  resultElement.classList.remove("hide");
+  resultElement.innerText = `Your score is ${
+    scoreCorrect - scoreIncorrect
+  } points, meaning you have ${scoreCorrect} correct answers and ${scoreIncorrect} incorrect ones from ${
+    questions.length
+  } questions.`;
+  animationFn();
+};
+
+const animationFn = () => {
+  resultElement.animate(
+    [
+      { opacity: "0", letterSpacing: `5px` },
+      {
+        opacity: "1",
+        letterSpacing: `initial`,
+        transform: `translate(0,-80px)`,
+      },
+    ],
+    {
+      duration: 1500,
+      delay: 1700,
+    }
+  );
+  setTimeout(() => {
+    resultElement.style.transform = `translate(0,-80px)`;
+  }, 3000);
+  let del = 500;
+  Array.from(answerBtnsElement.children).forEach((btn) => {
+    animationType1(btn, del);
+    setTimeout(() => {
+      btn.classList.add(`hide`);
+    }, del + 1500);
+  });
+  animationType1(questionElement, del);
+  setTimeout(() => {
+    questionElement.classList.add(`hide`);
+  }, del + 1500);
+  containerElement.animate(
+    [
+      { height: `${containerElement.offsetHeight}px` },
+      {
+        height: `${
+          containerElement.offsetHeight -
+          answerBtnsElement.offsetHeight -
+          questionElement.offsetHeight
+        }px`,
+      },
+    ],
+    {
+      duration: 2000,
+      delay: 1500,
+    }
+  );
+
+  resultElement.animate(
+    [
+      { opacity: `0` },
+      {
+        opacity: `1`,
+      },
+    ],
+    {
+      duration: 2000,
+      delay: 1500,
+    }
+  );
+  startBtnElement.animate(
+    [
+      { opacity: `0` },
+      {
+        opacity: `1`,
+      },
+    ],
+    {
+      duration: 2000,
+      delay: 1500,
+    }
+  );
+};
+
+const animationType1 = (btn, time) => {
+  btn.animate(
+    [
+      { opacity: "1", transform: `scale(1)` },
+      { opacity: "0", transform: `scale(0.1)` },
+    ],
+    {
+      duration: 1500,
+      delay: time,
+    }
+  );
+};
 
 import { showNextQuestion } from "./modules/showNextQuestion.js";
 //
 const resetButtons = () => {
-  nextBtnElement.classList.add("hide");
-
+  nextBtnElement.classList.add("visibility");
+  resultElement.style.transform = ``;
   while (answerBtnsElement.firstChild) {
     answerBtnsElement.removeChild(answerBtnsElement.firstChild);
   }

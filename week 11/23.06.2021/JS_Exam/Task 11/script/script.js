@@ -7,13 +7,13 @@ const outputElement = document.querySelector(`#output`);
 const formElement = document.querySelector(`form`);
 
 // Functions
-const getFunc = async (outputElement) => {
+const getFunc = async () => {
   await fetch(BASE_URL + "/skills")
     .then((response) => response.json())
     .then((data) => {
       data.forEach((item) => {
         // Creation of skills list
-        output.innerHTML += `
+        outputElement.innerHTML += `
         <tr class="item">
             <td>${item.id}</td>
             <td>${item.skill}</td>
