@@ -1,15 +1,38 @@
-document.querySelector(`a`).addEventListener(`click`, () => {
-  if (document.querySelector(`nav`).classList.contains(`none`)) {
-    document
-      .querySelector(`nav`)
-      .animate([{ opacity: 0 }, { opacity: 1 }], 500);
-    document.querySelector(`nav`).classList.toggle(`none`);
+const itemElements = document.querySelectorAll(`.item`);
+const numberElements = document.querySelectorAll(`.number`);
+const operatorElements = document.querySelectorAll(`.operator`);
+const outputElement = document.querySelector(`.output__main`);
+
+let output = ``;
+let operator = ``;
+
+const makeNumber = (e) => {
+  output += e.target.textContent;
+  console.log(output);
+  showIt(output);
+};
+const choseOperator = (e) => {
+  operator += e.target.textContent;
+};
+
+const performCalculation = () =>{
+  if (output) {
+    let num1 = +output;
+    
+    console.log(operator, num1);
+    showIt(operator);
   } else {
-    document
-      .querySelector(`nav`)
-      .animate([{ opacity: 1 }, { opacity: 0 }], 500);
-    setTimeout(() => {
-      document.querySelector(`nav`).classList.toggle(`none`);
-    }, 500);
+    outputElement.textContent = `Insert a number`;
   }
+}
+
+const showIt = (data) => {
+  outputElement.textContent += data;
+};
+
+operatorElements.forEach((item) => {
+  item.addEventListener(`click`, makeOperator);
+});
+numberElements.forEach((item) => {
+  item.addEventListener(`click`, makeNumber);
 });
