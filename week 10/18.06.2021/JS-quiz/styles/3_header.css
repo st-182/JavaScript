@@ -28,6 +28,16 @@ header nav ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 500ms;
+}
+header nav ul li a:hover {
+  transform: scale(1.1);
+  transition: 500ms;
+}
+
+header nav ul li a:active {
+  transform: scale(1.5);
+  transition: 500ms;
 }
 header nav ul li a i {
   font-size: 2rem;
