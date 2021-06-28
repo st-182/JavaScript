@@ -11,28 +11,32 @@ const makeNumber = (e) => {
   console.log(output);
   showIt(output);
 };
-const choseOperator = (e) => {
+const chooseOperator = (e) => {
   operator += e.target.textContent;
+  console.log(operator, num1);
 };
 
-const performCalculation = () =>{
+const performCalculation = () => {
   if (output) {
     let num1 = +output;
-    
-    console.log(operator, num1);
+
     showIt(operator);
   } else {
     outputElement.textContent = `Insert a number`;
   }
-}
+};
 
-const showIt = (data) => {
-  outputElement.textContent += data;
+const showIt = (e) => {
+  output += e.target.textContent;
+  outputElement.textContent += output;
 };
 
 operatorElements.forEach((item) => {
-  item.addEventListener(`click`, makeOperator);
+  item.addEventListener(`click`, chooseOperator);
 });
 numberElements.forEach((item) => {
   item.addEventListener(`click`, makeNumber);
+});
+itemElements.forEach((item) => {
+  item.addEventListener(`click`, showIt);
 });

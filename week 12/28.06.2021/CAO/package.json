@@ -1,0 +1,11 @@
+{
+  "name": "package.json-mastery",
+  "version": "1.0.1",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index"
+  },
+  "dependencies": {
+    "casual": "^1.6.2"
+  }
+}
