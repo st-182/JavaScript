@@ -1,4 +1,5 @@
-week 12/29.06.2021/something/frontend/node_modules
-week 12/29.06.2021/something/frontend/dist
-week 12/29.06.2021/something/frontend/.cashe
-week 12/29.06.2021/something/frontend/package.json
+node_modules
+dist
+.cashe
+package.json
+package-lock.json
