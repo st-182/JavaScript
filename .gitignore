@@ -1,5 +1,4 @@
 node_modules
 dist
 .cashe
-package.json
 package-lock.json
