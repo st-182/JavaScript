@@ -17,6 +17,7 @@ const app = express();
 const PORT = process.env.port; //|| 5000;
 
 //Middlewares
+app.use(express.json());
 app.use(
   cors({
     origin: `http://127.0.0.1:5500`,
@@ -48,9 +49,9 @@ app.get("/api/numbers/:id/:username", function (req, res) {
 });
 
 let cars = [
-  { id: 1, make: "Opel" },
-  { id: 2, make: "Mazda" },
-  { id: 3, make: "Audi" },
+  { id: 1, make: "Opel", year: 1991 },
+  { id: 2, make: "Mazda", year: 1999 },
+  { id: 3, make: "Audi", year: 2004 },
 ];
 
 app.get("/api/cars", function (req, res) {
@@ -58,9 +59,83 @@ app.get("/api/cars", function (req, res) {
 });
 
 app.get("/api/cars/:id", function (req, res) {
-  let data = cars.find((car) => car.id === +req.params.id);
-  if (!data) res.status(404).send(`There is no cars with this id`);
-  res.json(data.make);
+  let car = cars.find((car) => car.id === +req.params.id);
+  if (!car) res.status(404).send(`There is no cars with this id`);
+  res.json(car);
 });
+
+app.post("/api/cars", function (req, res) {
+  if (!req.body.make || !req.body.year || typeof req.body.year !== "number") {
+    res.status(400).send("make and year are required");
+    return;
+  } //else {
+  let newObj = {
+    id: cars.length + 1,
+    make: req.body.make,
+    year: req.body.year,
+  };
+  cars.push(newObj);
+  res.json({
+    message: "new car added",
+    cars: cars,
+  });
+  //}
+
+  if (req.body.make && req.body.year) {
+    console.log("ok");
+  }
+});
+
+// app.put("/api/cars/:id", function (req, res) {
+//   let carToUpdate = cars.find((car) => car.id === +req.params.id);
+//   console.log(carToUpdate);
+//   if (
+//     //!req.body.make ||
+//     //!req.body.year ||
+//     //typeof req.body.year !== "number" ||
+//     //+req.params.id > cars.length
+//     !carToUpdate
+//   ) {
+//     res.status(400).send("no car with this id");
+//     return;
+//   }
+//   carToUpdate.make = req.body.make;
+//   carToUpdate.year = req.body.year;
+
+//   // let newObj = {
+//   //   id: req.params.id,
+//   //   make: req.body.make,
+//   //   year: req.body.year,
+//   // };
+//   // cars[req.params.id] = newObj;
+//   console.log(cars);
+//   res.json({
+//     message: " car updated",
+//     cars: cars,
+//   });
+// });
+app.put("/api/cars/:id", function (req, res) {
+  if (!req.body.make || !req.body.year || typeof req.body.year !== "number") {
+    res.status(400).send("make and year are required");
+    return;
+  }
+  cars.forEach((car) => {
+    if (car.id === +req.params.id) {
+      car.make = req.body.make;
+      car.year = req.body.year;
+      res.json({
+        message: " car updated",
+        cars: cars,
+      });
+    }
+  });
+});
+
+app.delete("/api/cars/:id", function (req, res) {
+  cars;
+});
+
 //Start server
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+
+//0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20

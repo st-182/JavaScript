@@ -1,1 +1,19 @@
-GET http://localhost:5000/api/cars/2
+Post http://localhost:5000/api/cars
+Content-Type: application/json
+
+{
+    
+    "make": "Mazda",
+    "year": 2000
+}
+
+###
+PUT http://localhost:5000/api/cars/1
+Content-Type: application/json
+
+{
+    "make": "Acura one",
+    "year": 2010
+}
+### 
+GET http://localhost:5000/api/cars

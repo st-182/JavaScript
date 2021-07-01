@@ -1,0 +1,11 @@
+POST http://localhost:5000/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "this",
+    "model": "Premacy",
+    "country": "Lithuania",
+    "driver": "Aristidas"
+}
+
+###
