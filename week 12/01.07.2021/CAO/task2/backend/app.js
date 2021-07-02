@@ -371,7 +371,8 @@ app.get(`/:user`, (req, res) => {
   } else if (req.params.user === "females") {
     let result = data.reduce((acc, item) => {
       if (item.gender === "Female") {
-        acc.push(item.first_name);
+        // acc.push(`Name: ${item.first_name}, Surname: ${item.last_name}`);
+        acc.push({ name: item.first_name, surname: item.last_name });
       }
       return acc;
     }, []);

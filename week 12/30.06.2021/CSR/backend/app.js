@@ -70,7 +70,7 @@ app.post("/api/cars", function (req, res) {
     return;
   } //else {
   let newObj = {
-    id: cars.length + 1,
+    id: cars.length ? cars[cars.length - 1].id + 1 : 1,
     make: req.body.make,
     year: req.body.year,
   };
@@ -124,7 +124,7 @@ app.put("/api/cars/:id", function (req, res) {
       car.make = req.body.make;
       car.year = req.body.year;
       res.json({
-        message: " car updated",
+        message: "Car updated!",
         cars: cars,
       });
     }
@@ -132,7 +132,18 @@ app.put("/api/cars/:id", function (req, res) {
 });
 
 app.delete("/api/cars/:id", function (req, res) {
-  cars;
+  // cars.find(item=>item.id===req.params.id);
+  let newCars = cars.reduce((total, currentItem) => {
+    if (currentItem.id !== +req.params.id) total.push(currentItem);
+    return total;
+  }, []);
+  cars.length = 0;
+  cars.push(...newCars);
+
+  res.json({
+    message: "Car deleted!",
+    cars: cars,
+  });
 });
 
 //Start server

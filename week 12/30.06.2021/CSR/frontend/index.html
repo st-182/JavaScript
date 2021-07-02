@@ -22,7 +22,7 @@
       <section class="row p-5">
         <h4 class="col text-primary">Get cars</h4>
         <button id="get" class="btn btn-dark col">Get them</button>
-        <div id="output"></div>
+        <div id="output" class="row row-cols-3 m-auto p-1"></div>
       </section>
       <section class="row p-5">
         <h4 class="col text-primary">Get car</h4>
@@ -34,7 +34,7 @@
         <button id="getone" class="btn btn-dark col">Get it</button>
         <div id="output2"></div>
       </section>
-      <section class="row g-3 w-50 m-auto p-5">
+      <section class="row g-3 w-75 m-auto p-5 text-center">
         <h4 class="text-primary">Send a car without registration and SMS!</h4>
         <form>
           <input type="text" placeholder="Make" class="form-control" />
@@ -43,7 +43,7 @@
         </form>
         <p id="responce-from-server" class=""></p>
       </section>
-      <section class="row g-3 w-50 m-auto p-5">
+      <section class="row g-3 w-75 m-auto p-5 text-center">
         <h4 class="text-primary">Update this great CAR!</h4>
         <form id="form2">
           <select id="select-car" class="form-select"></select>
@@ -52,6 +52,14 @@
           <input type="submit" class="btn btn-dark" />
         </form>
         <p id="responce-from-server2" class=""></p>
+      </section>
+      <section class="row g-3 w-75 m-auto p-5 text-center">
+        <h4 class="text-primary">DELETE CAR!</h4>
+        <form id="form3">
+          <select id="select-car-to-delete" class="form-select"></select>
+          <input type="submit" class="btn btn-dark" value="Delete" />
+        </form>
+        <p id="responce-from-server3" class=""></p>
       </section>
     </main>
     <footer></footer>

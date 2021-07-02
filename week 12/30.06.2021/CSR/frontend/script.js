@@ -1,17 +1,26 @@
-const btn = document.querySelector(`#get`);
-const btn2 = document.querySelector(`#getone`);
+const btnShowAllCars = document.querySelector(`#get`);
+const btnShowOneCar = document.querySelector(`#getone`);
 const output = document.querySelector(`#output`);
 const output2 = document.querySelector(`#output2`);
 const select = document.querySelector(`select`);
 const selectCar = document.querySelector(`#select-car`);
-const formElement = document.querySelector(`form`);
-const formElement2 = document.querySelector(`#form2`);
-const responceElement = document.querySelector(`#responce-from-server`);
-const responceElement2 = document.querySelector(`#responce-from-server2`);
+const formPostElement = document.querySelector(`form`);
+const formUpdateElement = document.querySelector(`#form2`);
+const formDeleteElement = document.querySelector(`#form3`);
+const selectCarToDelete = document.querySelector(`#select-car-to-delete`);
+const responceFromPOSTcarElement = document.querySelector(
+  `#responce-from-server`
+);
+const responceFromUpdateCarElement = document.querySelector(
+  `#responce-from-server2`
+);
+const responceFromDeleteCarElement = document.querySelector(
+  `#responce-from-server3`
+);
 
 console.log(select.value);
 
-function show() {
+function showAllCars() {
   fetch("http://localhost:5000/api/cars")
     .then((res) => res.json())
     .then((data) => {
@@ -23,16 +32,18 @@ function show() {
       //   });
       output.innerHTML = data.reduce((acc, item) => {
         let car = `
-            <h3>${item.id}</h3>
-            <h2>${item.make}</h2>
-            <h2>${item.year}</h2>
+        <div class="col bg-light text-center p-1 gap-2">
+            <h2>ID:${item.id}</h2>
+            <h3 class="text-info">${item.make}</h3>
+            <h3>${item.year}</h3>
+        </div>
             `;
         console.log(car);
         return acc + car;
       }, ``);
     });
 }
-function showOne() {
+function showOneCar() {
   fetch(`http://localhost:5000/api/cars/${select.value}`)
     .then((res) => res.json())
     .then((data) => {
@@ -42,7 +53,7 @@ function showOne() {
             `;
     });
 }
-const optionsEl = () => {
+const createOptionsElemets = () => {
   fetch("http://localhost:5000/api/cars")
     .then((res) => res.json())
     .then((data) => {
@@ -53,6 +64,13 @@ const optionsEl = () => {
         return acc + car;
       }, ``);
       selectCar.innerHTML = data.reduce((acc, item) => {
+        let car = `
+                <option value="${item.id}">${item.id}</option>
+            `;
+        return acc + car;
+      }, ``);
+
+      selectCarToDelete.innerHTML = data.reduce((acc, item) => {
         let car = `
                 <option value="${item.id}">${item.id}</option>
             `;
@@ -75,12 +93,12 @@ const postCar = (e) => {
     body: JSON.stringify(data),
   })
     .then((res) => {
-      if (res.status === 200) optionsEl();
+      if (res.status === 200) createOptionsElemets();
       return res.json();
     })
     .then(
       (data) =>
-        (responceElement.innerHTML += `<p>${data.message}: ${
+        (responceFromPOSTcarElement.innerHTML += `<p>${data.message}: ${
           data.cars[data.cars.length - 1].id
         },${data.cars[data.cars.length - 1].make}, ${
           data.cars[data.cars.length - 1].year
@@ -104,12 +122,12 @@ const updateCar = (e) => {
     body: JSON.stringify(data),
   })
     .then((res) => {
-      if (res.status === 200) optionsEl();
+      if (res.status === 200) createOptionsElemets();
       return res.json();
     })
     .then(
       (data) =>
-        (responceElement2.innerHTML += `<p>${data.message}: ${
+        (responceFromUpdateCarElement.innerHTML += `<p>${data.message}: ${
           data.cars[data.cars.length - 1].id
         },${data.cars[data.cars.length - 1].make}, ${
           data.cars[data.cars.length - 1].year
@@ -118,8 +136,29 @@ const updateCar = (e) => {
     .catch((err) => console.log(err));
 };
 
-btn.addEventListener(`click`, show);
-btn2.addEventListener(`click`, showOne);
-document.addEventListener(`DOMContentLoaded`, optionsEl);
-formElement.addEventListener(`submit`, postCar);
-formElement2.addEventListener(`submit`, updateCar);
+const deleteCar = (e) => {
+  e.preventDefault();
+  fetch(`http://localhost:5000/api/cars/${e.target[0].value}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => {
+      if (res.status === 200) createOptionsElemets();
+      responceFromDeleteCarElement.innerHTML += `<p>Server responce:${res.status}</p>`;
+      return res.json();
+    })
+    .then(
+      (data) =>
+        (responceFromDeleteCarElement.innerHTML += `<p>${data.message}</p>`)
+    )
+    .catch((err) => console.log(err));
+};
+
+btnShowAllCars.addEventListener(`click`, showAllCars);
+btnShowOneCar.addEventListener(`click`, showOneCar);
+document.addEventListener(`DOMContentLoaded`, createOptionsElemets);
+formPostElement.addEventListener(`submit`, postCar);
+formUpdateElement.addEventListener(`submit`, updateCar);
+formDeleteElement.addEventListener(`submit`, deleteCar);
