@@ -24,6 +24,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 35px;
 }
 .btn {
   width: calc(50vw - 10px);

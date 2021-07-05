@@ -57,6 +57,14 @@ const performingCalculation = (dataArr) => {
               console.log(`/`);
               accumulator /= result[index + 1];
               break;
+            case `*`:
+              console.log(`*`);
+              accumulator *= result[index + 1];
+              break;
+            case `%`:
+              console.log(`%`);
+              accumulator += result[index + 1] * 0.01;
+              break;
           }
         }
         return accumulator;

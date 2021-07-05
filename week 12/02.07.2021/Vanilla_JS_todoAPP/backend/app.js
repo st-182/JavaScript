@@ -8,7 +8,7 @@
 
 //! Variables
 //! ----logic:
-const todos = [];
+let todos = [];
 
 //! Import
 const express = require(`express`);
@@ -30,16 +30,25 @@ app.use(express.json());
 app.get(`/`, (req, res) => {
   res.json(todos);
 });
+app.get(`/:id`, (req, res) => {
+  console.log(req.params.id);
+  res.json(todos[req.params.id - 1]);
+});
 
-//! ----PUSH:
-app.push(`/`, (req, res) => {
+//! ----POST:
+app.post(`/`, (req, res) => {
   if (!req.body.title || !req.body.description) {
     res.status(400).res.send(`You have sent wrong data format/type/structure. 
     Have to be:
     {title: "Sample", description: "this is my first message"}`);
     return;
   }
-  todos.push(res.body);
+  let newItem = {
+    id: todos.length ? todos[todos.length - 1].id + 1 : 1,
+    title: req.body.title,
+    description: req.body.description,
+  };
+  todos.push(newItem);
   res.json({
     message: "Added!",
     todo: todos[todos.length - 1],
@@ -47,11 +56,30 @@ app.push(`/`, (req, res) => {
 });
 
 //! ----PUT:
-app.put(`/`, (req, res) => {
-  res.json(todos);
+app.put(`/:id`, (req, res) => {
+  todos[req.params.id - 1].title = req.body.title;
+  todos[req.params.id - 1].description = req.body.description;
+  res.json({
+    message: `Updated`,
+    todo: todos[req.params.id - 1],
+  });
 });
 
 //! ----DELETE:
-app.delete(`/`, (req, res) => {
-  res.json(todos);
+app.delete(`/:id`, (req, res) => {
+  //   todos[req.params.id - 1] = ``;
+  let newtodos = todos.reduce((total, currentItem) => {
+    if (currentItem.id !== +req.params.id) total.push(currentItem);
+    return total;
+  }, []);
+  todos.length = 0;
+  todos.push(...newtodos);
+
+  res.json({
+    message: "Todo deleted!",
+    todo: todos,
+  });
 });
+
+//! Starting Server:
+app.listen(5000, () => console.log(`Server is running, port 5000`));

@@ -25,7 +25,7 @@
       <div class="container">
         <section class="border border-light rounded mt-5">
           <h1 class="py-3 text-center bg-primary text-white">TODO APP</h1>
-          <form class="p-5">
+          <form id="add-todo" class="p-5">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label"
                 >Enter your todo title:</label
@@ -40,26 +40,15 @@
               <input type="text" class="form-control" />
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="toggle-add-update" type="submit" class="btn btn-primary">Add new</button>
           </form>
         </section>
 
-        <section id="todos-output">
-          <div class="row pt-5">
-            <div class="col col-sm-6 col-md-4 col-lg-3">
-              <div class="card" style="width: 18rem">
-                <div class="card-body">
-                  <h5 class="card-title">Todo title</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                  <a href="#" class="card-link">Update</a>
-                  <a href="#" class="card-link">Delete</a>
-                </div>
-              </div>
-            </div>
+        <section id="todos-output" class="row text-center">
+          
+            
           </div>
+          
         </section>
       </div>
     </main>

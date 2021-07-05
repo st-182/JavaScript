@@ -101,7 +101,7 @@ const animationFn = () => {
       {
         opacity: "1",
         letterSpacing: `initial`,
-        transform: `translate(0,-80px)`,
+        //transform: `translate(0,-80px)`,
       },
     ],
     {
@@ -110,7 +110,7 @@ const animationFn = () => {
     }
   );
   setTimeout(() => {
-    resultElement.style.transform = `translate(0,-80px)`;
+    // resultElement.style.transform = `translate(0,20px)`;
   }, 3000);
   let del = 500;
   Array.from(answerBtnsElement.children).forEach((btn) => {
