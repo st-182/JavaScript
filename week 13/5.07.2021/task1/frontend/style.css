@@ -1,0 +1,9 @@
+#error {
+  color: rgb(179, 21, 21);
+  text-align: center;
+}
+form {
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
+}
