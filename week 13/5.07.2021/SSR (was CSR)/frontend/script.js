@@ -33,23 +33,26 @@ function showAllCars() {
       output.innerHTML = data.reduce((acc, item) => {
         let car = `
         <div class="col bg-light text-center p-1 gap-2">
-            <h2>ID:${item.id}</h2>
-            <h3 class="text-info">${item.make}</h3>
-            <h3>${item.year}</h3>
+            <h2>ID:${item._id}</h2>
+            <h3 class="text-info">Make: ${item.make}</h3>
+            <h3>Model: ${item.model}</h3>
+            <h3>Year: ${item.year}</h3>
+            <h3>Color: ${item.color}</h3>
         </div>
             `;
-        console.log(car);
+        // console.log(car);
         return acc + car;
       }, ``);
     });
 }
 function showOneCar() {
+  // console.log(select.value);
   fetch(`http://localhost:5000/api/cars/${select.value}`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
       output2.innerHTML = `
-            <h3>${data.make} ${data.year}</h3>
+            <h3>${data.make} ${data.model} ${data.year} ${data.color}</h3>
             `;
     });
 }
@@ -59,20 +62,20 @@ const createOptionsElemets = () => {
     .then((data) => {
       select.innerHTML = data.reduce((acc, item) => {
         let car = `
-                <option value="${item.id}">${item.id}</option>
+                <option value="${item._id}">${item.model}</option>
             `;
         return acc + car;
       }, ``);
       selectCar.innerHTML = data.reduce((acc, item) => {
         let car = `
-                <option value="${item.id}">${item.id}</option>
+                <option value="${item._id}">${item.model}</option>
             `;
         return acc + car;
       }, ``);
 
       selectCarToDelete.innerHTML = data.reduce((acc, item) => {
         let car = `
-                <option value="${item.id}">${item.id}</option>
+                <option value="${item._id}">${item.model}</option>
             `;
         return acc + car;
       }, ``);
@@ -83,8 +86,11 @@ const postCar = (e) => {
   e.preventDefault();
   let data = {
     make: e.target[0].value,
-    year: +e.target[1].value,
+    model: e.target[1].value,
+    year: +e.target[2].value,
+    color: e.target[3].value,
   };
+  console.log(data);
   fetch(`http://localhost:5000/api/cars`, {
     method: "POST",
     headers: {
@@ -97,12 +103,12 @@ const postCar = (e) => {
       return res.json();
     })
     .then(
-      (data) =>
-        (responceFromPOSTcarElement.innerHTML += `<p>${data.message}: ${
-          data.cars[data.cars.length - 1].id
-        },${data.cars[data.cars.length - 1].make}, ${
-          data.cars[data.cars.length - 1].year
-        } </p>`)
+      (data) => console.log(data)
+      // (responceFromPOSTcarElement.innerHTML += `<p>${data.message}: ${
+      //   data.cars[data.cars.length - 1].id
+      // },${data.cars[data.cars.length - 1].make}, ${
+      //   data.cars[data.cars.length - 1].year
+      // } </p>`)
     )
     .catch((err) => console.log(err));
 };
@@ -111,7 +117,9 @@ const updateCar = (e) => {
   e.preventDefault();
   let data = {
     make: e.target[1].value,
-    year: +e.target[2].value,
+    model: e.target[2].value,
+    year: +e.target[3].value,
+    color: e.target[4].value,
   };
   console.log(data);
   fetch(`http://localhost:5000/api/cars/${e.target[0].value}`, {
@@ -122,16 +130,17 @@ const updateCar = (e) => {
     body: JSON.stringify(data),
   })
     .then((res) => {
+      console.log(res.status);
       if (res.status === 200) createOptionsElemets();
       return res.json();
     })
     .then(
-      (data) =>
-        (responceFromUpdateCarElement.innerHTML += `<p>${data.message}: ${
-          data.cars[data.cars.length - 1].id
-        },${data.cars[data.cars.length - 1].make}, ${
-          data.cars[data.cars.length - 1].year
-        } </p>`)
+      (data) => (responceFromUpdateCarElement.innerHTML += `<p>done</p>`)
+      // (responceFromUpdateCarElement.innerHTML += `<p>${data.message}: ${
+      //   data.cars[data.cars.length - 1].id
+      // },${data.cars[data.cars.length - 1].make}, ${
+      //   data.cars[data.cars.length - 1].year
+      // } </p>`)
     )
     .catch((err) => console.log(err));
 };

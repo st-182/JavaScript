@@ -1,22 +1,65 @@
 const express = require(`express`);
 const mongoose = require(`mongoose`);
 const cors = require(`cors`);
+const { MongoClient } = require("mongodb");
 require(`dotenv`).config();
 
 const app = express();
 const PORT = process.env.port; //|| 5000;
+const MONGO_DB_URL = process.env.MONGO_DB_URL;
 
-mongoose
-  .connect(process.env.MONGO_DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then((res) => {
-    console.log(`Connected to MongoDB`);
-    //Start server
-    app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
-  })
-  .catch((err) => console.log(err));
+const carsSchema = mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  make: String,
+  year: Number,
+});
+module.exports = mongoose.model("Car", carsSchema);
+
+// const client = new MongoClient(MONGO_DB_URL);
+// let colorAndText;
+// const start = async () => {
+//   try {
+//     await client.connect((err) => {
+//       console.log("Connected successfully to DB");
+//       //   client.close();
+//     });
+//     colorAndText = client.db().collection("name", "colorAndText");
+//     await colorAndText.insertOne(doc, { name: `Petras`, car: `BMW` });
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
+// start();
+// client.connect(async () => {
+//   record = await client.db().collection("clients").insertOne({
+//     name: "Petras",
+//     surname: "Slekys",
+//     email: "petras@ibm.com",
+//   });
+//   console.log(record);
+//   client.close();
+
+// mongoose
+//   .connect(process.env.MONGO_DB_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then((res) => {
+//     console.log(`Connected to MongoDB`);
+//     //Start server
+//     app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+//   })
+//   .catch((err) => console.log(err));
+
+// const Schema = mongoose.Schema;
+// const ObjectId = Schema.ObjectId;
+
+// const BlogPost = new Schema({
+//   author: ObjectId,
+//   title: String,
+//   body: String,
+//   date: Date,
+// });
 
 //Middlewares
 app.use(express.json());
@@ -28,7 +71,7 @@ app.use(
 //Routes
 //get
 app.get("/", function (req, res) {
-  res.send("empty page, sorry, my");
+  res.send(colorAndText);
 });
 
 app.get("/api", function (req, res) {
@@ -119,3 +162,5 @@ app.delete("/api/cars/:id", function (req, res) {
     cars: cars,
   });
 });
+
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
