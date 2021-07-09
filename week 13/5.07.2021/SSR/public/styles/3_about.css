@@ -1,0 +1,22 @@
+header {
+  display: flex;
+  flex-wrap: wrap;
+}
+header div {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header nav {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+}
+header nav ul {
+  display: flex;
+  list-style: none;
+}
+header nav ul li {
+  padding: 0 15px;
+}

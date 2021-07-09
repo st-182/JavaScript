@@ -1,0 +1,7 @@
+.collection {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.item {
+  text-align: center;
+}

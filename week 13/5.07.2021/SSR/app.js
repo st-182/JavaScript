@@ -7,7 +7,8 @@ const app = express();
 
 //Middlewares
 //-adding ejs template engine to project
-app.set(`wiev engine`, `ejs`);
+app.set(`view engine`, `ejs`);
+app.use(express.static(`public`));
 
 //Database
 let posts = [
@@ -24,16 +25,21 @@ let posts = [
 ];
 
 //Routes
-//-get
+//-home
 app.get(`/`, (req, res) => {
-  //   res.sendFile(`./views/index.html`, { root: __dirname });
-  res.sendFile(__dirname + "/views/index.html");
+  res.render(`index`, { title: `Home` });
 });
+//-about
 app.get(`/about`, (req, res) => {
-  res.sendFile(__dirname + "/views/about.html");
+  res.render(`about`, { title: `About Me` });
 });
+//-blog
 app.get(`/blog`, (req, res) => {
-  res.sendFile(__dirname + "/views/blog.html");
+  res.render(`blog`, { title: `Blog Posts`, posts: posts });
+});
+//404
+app.get(`/blog`, (req, res) => {
+  res.status(`404`).render(`404`, { title: `Not Found` });
 });
 
 //Starting Server
