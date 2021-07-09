@@ -33,7 +33,7 @@ function showAllCars() {
       output.innerHTML = data.reduce((acc, item) => {
         let car = `
         <div class="col bg-light text-center p-1 gap-2">
-            <h2>ID:${item._id}</h2>
+            <h6>ID:${item._id}</h6>
             <h3 class="text-info">Make: ${item.make}</h3>
             <h3>Model: ${item.model}</h3>
             <h3>Year: ${item.year}</h3>
@@ -50,7 +50,6 @@ function showOneCar() {
   fetch(`http://localhost:5000/api/cars/${select.value}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       output2.innerHTML = `
             <h3>${data.make} ${data.model} ${data.year} ${data.color}</h3>
             `;
