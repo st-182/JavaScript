@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include(`./partials/head.ejs`)%>
+    <!-- Additional CSS -->
+    <link rel="stylesheet" href="../public/styles/3_blog.css" />
+  </head>
+  <body>
+    <header>
+      <div>My blog</div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Me</a></li>
+          <li><a href="/blog">My blog</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h1><%- title %></h1>
+      </section>
+      <section class="collection">
+        <% posts.forEach(post => { %>
+        <div class="item">
+          <h3><%= post.title %></h3>
+          <p><%= post.excerpt %></p>
+          <p><%= post.content %></p>
+        </div>
+        <% }) %>
+      </section>
+    </main>
+    <%- include(`./partials/footer.ejs`)%>
+  </body>
+</html>

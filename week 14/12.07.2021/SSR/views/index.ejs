@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs")%>
+    <!-- CUSTOM CSS (additional) -->
+    <link rel="stylesheet" href="./styles/3_index.css" />
+  </head>
+  <body>
+    <header>
+      <div>My Blog</div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Me</a></li>
+          <li><a href="/blog">My Blog</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h1>Home</h1>
+        <h2>Welcome to my tech blog!</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto ullam
+          possimus dignissimos sequi et doloremque, rerum quae id enim deserunt
+          excepturi accusamus tempore ad? Maxime temporibus nisi nulla
+          perspiciatis aut!
+        </p>
+      </section>
+      <div class="posts-container">
+        <% posts.slice(0,3).forEach(post => { %>
+        <div class="post">
+          <h3><%= post.title %></h3>
+          <p><%= post.excerpt %></p>
+          <a href="/blog/<%= post.id%>">Read full post</a>
+        </div>
+        <% }) %>
+        <div class="link-container"><a href="/blog">More Posts...</a></div>
+      </div>
+
+      <section></section>
+    </main>
+
+    <%- include("./partials/footer.ejs")%>
+  </body>
+</html>

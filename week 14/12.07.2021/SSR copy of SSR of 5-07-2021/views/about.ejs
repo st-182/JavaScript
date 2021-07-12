@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include(`./partials/head.ejs`)%>
+    <!-- Additional CSS -->
+    <link rel="stylesheet" href="../public/styles/3_about.css" />
+  </head>
+  <body>
+    <header>
+      <div>My blog</div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Me</a></li>
+          <li><a href="/blog">My blog</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <h1><%- title %></h1>
+      </section>
+    </main>
+    <%- include(`./partials/footer.ejs`)%>
+  </body>
+</html>
