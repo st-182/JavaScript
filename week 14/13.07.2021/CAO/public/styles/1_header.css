@@ -1,0 +1,32 @@
+header {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: hsl(200, 60%, 45%);
+  height: 7vh;
+}
+
+header div {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  padding-left: 3vw;
+}
+
+header nav {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+header nav ul {
+  display: flex;
+
+  list-style: none;
+}
+
+header nav ul li {
+  padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

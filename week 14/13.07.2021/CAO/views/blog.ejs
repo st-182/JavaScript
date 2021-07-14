@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs")%>
+    <!-- CUSTOM CSS (additional) -->
+    <link rel="stylesheet" href="./styles/3_blog.css" />
+  </head>
+  <body>
+    <header>
+      <div>My Blog</div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Me</a></li>
+          <li><a href="/blog">My Blog</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h1>My Blog</h1>
+
+        <div class="posts-container">
+          <% posts.forEach(post => { %>
+          <div class="post">
+            <img src="<%= post.img_url %>" alt="" />
+            <h3><%= post.title %></h3>
+            <p><%= post.excerpt %></p>
+            <a href="/blog/<%= post.id%>">Read full post</a>
+          </div>
+          <% }) %>
+        </div>
+      </section>
+    </main>
+
+    <%- include("./partials/footer.ejs")%>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+main {
+  min-height: 85vh;
+}
+.posts {
+  padding: 10px;
+}
+.post img {
+  width: 100%;
+}

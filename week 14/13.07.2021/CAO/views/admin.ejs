@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs") %>
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="./styles/3_blog.css" />
+    <link rel="stylesheet" href="./styles/3_admin.css" />
+    <!-- custom JS -->
+    <script defer src="/scripts/admin.js"></script>
+  </head>
+  <body>
+    <header>
+      <div>My Blog</div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Me</a></li>
+          <li><a href="/blog">My Blog</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h1>ADMIN PANEL</h1>
+        <h3>Create post</h3>
+        <form action="/blog" method="POST">
+          <label for="post-title">Title</label>
+          <input
+            type="text"
+            placeholder="Post title..."
+            name="title"
+            id="post-title"
+          />
+          <label for="post-excerpt">Excerpt</label>
+          <input
+            type="text"
+            placeholder="Post excerpt..."
+            name="excerpt"
+            id="post-excerpt"
+          />
+          <label for="post-content">Content</label>
+          <textarea
+            type="text"
+            name="content"
+            placeholder="Post content..."
+            id="post-content"
+          ></textarea>
+          <input type="submit" value="Add new post" />
+        </form>
+      </section>
+      <section>
+        <h3>Post list</h3>
+        <div class="posts-container">
+          <% posts.forEach(post => { %>
+          <div class="post">
+            <h3><%= post.title %></h3>
+            <p><%= post.excerpt %></p>
+            <button data-id="<%- post._id%>">Delete</button>
+          </div>
+          <% }) %>
+        </div>
+      </section>
+    </main>
+
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html>
