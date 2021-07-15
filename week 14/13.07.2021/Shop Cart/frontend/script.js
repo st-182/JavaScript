@@ -51,34 +51,36 @@ const showProducts = (endpoint) => {
 const showCartItems = () => {};
 
 //--  adding products to cart
+// -- adding product to cart
 const addProductToCart = (e) => {
-  const productID = +e.target.id;
-
-  //-- if it is first item, then added
-  if (!localStorage.getItem("cartItem")) {
-    const product = products.find((product) => product.id === productID);
-    product.qti = 1;
-
+  const productId = +e.target.id;
+  const product = products.find((item) => item.id === productId);
+  // ---- if it's first item, thats been added
+  if (!localStorage.getItem("cartItems")) {
+    product.qty = 1;
     localStorage.setItem("cartItems", JSON.stringify([product]));
   } else {
-    // if not first item
-    const productsFromLocalStorage = JSON.parse(
+    // ---- if its, not first item, thats been added
+    let productsFromLocalStorage = JSON.parse(
       localStorage.getItem("cartItems")
     );
-
+    // ------ if item already exsists
     if (
-      productsFromLocalStorage.findIndex((item) => item.id === productID) >= 0
+      productsFromLocalStorage.findIndex((item) => item.id === productId) >= 0
     ) {
       productsFromLocalStorage.forEach((product) => {
-        if (item.id === productID) product.qti += 1;
+        if (product.id === productId) product.qty += 1;
       });
     } else {
-      product.qti = 1;
+      // ------ if item is not exsisting
+      product.qty = 1;
       productsFromLocalStorage.push(product);
     }
-    //-- sending to localStorage
+    //  ----- sending to localstorage updated productsFromLocalStorage
     localStorage.setItem("cartItems", JSON.stringify(productsFromLocalStorage));
   }
+  // ---- updating Cart UI
+  showCartItems();
 };
 
 //--  removing products from cart
