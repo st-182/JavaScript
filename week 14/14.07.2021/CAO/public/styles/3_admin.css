@@ -1,0 +1,45 @@
+form {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  flex-direction: column;
+  background-color: hsl(240, 25%, 55%);
+  padding: 10px;
+  gap: 10px;
+}
+form label {
+  width: 50%;
+  margin: 0 auto;
+  color: white;
+}
+form input,
+form textarea {
+  width: 50%;
+  margin: 0 auto;
+  background: hsla(253, 91%, 9%, 0.2);
+  color: white;
+  border: none;
+  padding: 10px;
+}
+input::placeholder,
+textarea::placeholder {
+  color: white;
+}
+input[type="submit"] {
+  padding: 10px;
+  color: tomato;
+  border-radius: 10px;
+  transition: 500ms;
+  border: 1px solid white;
+}
+input[type="submit"]:hover {
+  color: salmon;
+  /* letter-spacing: 1px; */
+  border-radius: 25px;
+  transition: 500ms;
+  background-color: hsla(250, 91%, 9%, 0.3);
+}
+input[type="submit"]:active {
+  color: salmon;
+  background-color: hsla(300, 91%, 9%, 0.3);
+}

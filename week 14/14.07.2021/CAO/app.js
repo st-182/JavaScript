@@ -3,24 +3,14 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const colors = require("colors");
 
-const Post = require("./models/postModel");
+const Bar = require("./models/barModel");
 
 require("dotenv").config();
 
 const app = express();
 
 //Controllers
-const {
-  homePage,
-  aboutMePage,
-  adminPage,
-} = require(`./controllers/pages.controller.js`);
-const {
-  getAllPosts,
-  getSinglePost,
-  postSinglePost,
-  deleteSinglePost,
-} = require(`./controllers/blogController.js`);
+const { homePage } = require(`./controllers/pages.controller.js`);
 
 //Connecting mongoDB
 mongoose
@@ -41,11 +31,11 @@ mongoose
 
 // Middlewares
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
-app.use((req, res, next) => {
-  res.locals.path = req.path;
-  next();
-});
+// app.use(express.urlencoded({ extended: true }));
+// app.use((req, res, next) => {
+//   res.locals.path = req.path;
+//   next();
+// });
 
 // -- adding ejs template engine to project
 app.set("view engine", "ejs");
@@ -56,23 +46,6 @@ app.set("view engine", "ejs");
 // Routes
 // -- Home page
 app.get("/", homePage);
-
-// About Me page
-app.get("/about", aboutMePage);
-
-// My Blog page
-app.get("/blog", getAllPosts);
-
-// -- single post page
-app.get("/blog/:id", getSinglePost);
-
-app.post("/blog", postSinglePost);
-
-app.delete("/blog/:id", deleteSinglePost);
-
-// ADMIN page
-app.get("/admin", adminPage);
-// ADMIN page -- POST
 
 // 404 page
 app.use((req, res) => {

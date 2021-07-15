@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head.ejs")%>
+    <!-- CUSTOM CSS (additional) -->
+    <link rel="stylesheet" href="./styles/3_index.css" />
+  </head>
+  <body>
+    <%- include("./partials/header.ejs")%>
+
+    <main>
+      <section>
+        <h1>Vilnius, Kaunas, Klaipeda</h1>
+      </section>
+      <div class="posts-container">
+        <% posts.forEach(post => { %>
+        <div class="post">
+          <img src="<%= post.img_url %>" alt="" />
+          <h3><%= post.title %></h3>
+          <p><%= post.excerpt %></p>
+          <a href="/blog/<%= post.id%>">Read full post</a>
+        </div>
+        <% }) %>
+        <!-- <div class="link-container"><a href="/blog">More Posts...</a></div> -->
+      </div>
+
+      <section></section>
+    </main>
+
+    <%- include("./partials/footer.ejs")%>
+  </body>
+</html>

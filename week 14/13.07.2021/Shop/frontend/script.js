@@ -37,11 +37,25 @@ const addToCart = (e) => {
   } else {
     currentCartItems = [];
   }
-  currentCartItems.push({
+  let newItem = {
     id: `${currentCartItems.length ? currentCartItems.length + 1 : 1}`,
     name: e.target.parentElement.children[1].textContent,
     price: e.target.parentElement.children[2].textContent,
+    quantity: 1,
+  };
+  let quantityOfItems = currentCartItems.filter((item) => {
+    if (item.name === newItem.name && item.price === newItem.price) {
+      return item;
+    }
   });
+  // console.log(quantityOfItems);
+  if (quantityOfItems.length >= 1) {
+    quantityOfItems[0].quantity += 1;
+  }
+  console.log(quantityOfItems[0]);
+  if (quantityOfItems[0] === undefined) {
+    currentCartItems.push(newItem);
+  }
 
   localStorage.setItem("Cart", JSON.stringify(currentCartItems));
   //   console.log(localStorage.getItem("Cart"));
@@ -57,20 +71,24 @@ const showCart = () => {
             <div class="line">
             <p>${item.name}</p>
             <p>${item.price}</p>
+            <p> <span id="remove-item">-</span> ${
+              item.quantity
+            } <span id="add-item">+</span></p>
+            <p>Subtotal ${+item.price.slice(0, -1) * item.quantity}</p>
             <button class="delete" id="${item.id}">Delete</button>
             </div>
         `;
     });
-    // cartItemsOutputElement.innerHTML += `
-    //         <div class="line">
-    //         <p>Total:</p>
-    //         <p>${cartItemsOutputElement.reduce((acc, cur) => {
-    //           acc += cur;
-    //           return acc;
-    //         }, 0)}</p>
-    //         <button class="delete" id="${item.id}">Delete</button>
-    //         </div>
-    //     `;
+    if (currentCartItems.length >= 1) {
+      cartItemsOutputElement.innerHTML += `
+            <div class="line">
+            <p>Total:</p>
+            <p>100</p>
+            <button class="delete" id="${100}">Delete</button>
+            </div>
+        `;
+    }
+
     howManyItemsElement.textContent = currentCartItems.length;
     document.querySelectorAll(`.delete`).forEach((item) => {
       item.addEventListener(`click`, deleteCartItem);
