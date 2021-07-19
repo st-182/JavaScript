@@ -8,6 +8,7 @@
 const PRODUCTS_URI = `http://localhost:5000/api/products`;
 //-- DOM elements
 const productsOutputElement = document.querySelector(`#products`);
+const cartOutputElement = document.querySelector(`#tbody`);
 
 //-- logic
 let products = [];
@@ -28,7 +29,7 @@ const showProducts = (endpoint) => {
         <h5> ${item.name} </h5>
         <p>$${item.category.join(`,`)} </p>
         <p>$${item.price.toFixed(2)} </p>
-        <button class="product__add-to-cart-btn" id="${
+        <button class="product__add-to-cart-btn" data-id="${
           item.id
         }"> Add to cart</button>
         </div>
@@ -48,12 +49,104 @@ const showProducts = (endpoint) => {
 };
 
 //--  showing chart items from localstorage
-const showCartItems = () => {};
+const showCartItems = () => {
+  let cartItems = JSON.parse(localStorage.getItem("cartItems"));
+  if (cartItems) {
+    cartOutputElement.innerHTML = cartItems.reduce((acc, item) => {
+      acc += `
+    
+      <tr>
+        <td><img src="${item.image}" alt="${item.name}"></td>
+        <td>${item.name}</td>
+        <td><button data-id="${
+          item.id
+        }" class="cart-item-qty-action">-</button> ${
+        item.qty
+      } <button data-id="${
+        item.id
+      }" class="cart-item-qty-action">+</button></td>
+        <td>$${(item.qty * item.price).toFixed(2)}</td>
+        <td><button class="remove-cart-item-btn" data-id="${
+          item.id
+        }">Remove</button></td>
+      </tr>
+    
+    `;
+      return acc;
+    }, ``);
+
+    cartOutputElement.innerHTML += `
+    
+      <tr>
+        <td>***</td>
+        <td>Totals:</td>
+        <td>Quantity: ${cartItems.reduce((acc, item) => {
+          acc += item.qty;
+          return acc;
+        }, 0)}</td>
+        <td>Price: $${cartItems.reduce((acc, item) => {
+          acc += item.price * item.qty;
+          return acc;
+        }, 0)}</td>
+        <td>***</td>
+      </tr>
+
+    `;
+  }
+
+  const removeCartItemBtns = document.querySelectorAll(`.remove-cart-item-btn`);
+  removeCartItemBtns.forEach((btn) =>
+    btn.addEventListener(`click`, removeProductFromCart)
+  );
+  // Show table when it has items in it (Cart)
+  if (cartOutputElement.children.length > 0) {
+    document.querySelector(`table`).classList.remove(`table-none`);
+  } else {
+    document.querySelector(`table`).classList.add(`table-none`);
+  }
+
+  // Change cart item quantity
+  const cartItemQtyActions = document.querySelectorAll(`.cart-item-qty-action`);
+  cartItemQtyActions.forEach((action) =>
+    action.addEventListener(`click`, changeCartItemQty)
+  );
+};
+
+const changeCartItemQty = (e) => {
+  const productID = +e.target.dataset.id;
+  let cartItems = JSON.parse(localStorage.getItem("cartItems"));
+  let updatedCartItems = cartItems.filter((item) => item.id === productID);
+  switch (e.target.textContent) {
+    case `+`:
+      if (updatedCartItems[0].qty < updatedCartItems[0].inStock) {
+        updatedCartItems[0].qty++;
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        showCartItems();
+      }
+      break;
+    case `-`:
+      if (updatedCartItems[0].qty > 1) {
+        updatedCartItems[0].qty--;
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        showCartItems();
+      }
+      break;
+  }
+};
+
+const removeProductFromCart = (e) => {
+  const productID = +e.target.dataset.id;
+  let cartItems = JSON.parse(localStorage.getItem("cartItems"));
+  let updatedCartItems = cartItems.filter((item) => item.id !== productID);
+  console.log(updatedCartItems);
+  localStorage.setItem(`cartItems`, JSON.stringify(updatedCartItems));
+  showCartItems();
+};
 
 //--  adding products to cart
 // -- adding product to cart
 const addProductToCart = (e) => {
-  const productId = +e.target.id;
+  const productId = +e.target.dataset.id;
   const product = products.find((item) => item.id === productId);
   // ---- if it's first item, thats been added
   if (!localStorage.getItem("cartItems")) {
@@ -64,7 +157,7 @@ const addProductToCart = (e) => {
     let productsFromLocalStorage = JSON.parse(
       localStorage.getItem("cartItems")
     );
-    // ------ if item already exsists
+    // ------ if item already exists
     if (
       productsFromLocalStorage.findIndex((item) => item.id === productId) >= 0
     ) {
@@ -72,7 +165,7 @@ const addProductToCart = (e) => {
         if (product.id === productId) product.qty += 1;
       });
     } else {
-      // ------ if item is not exsisting
+      // ------ if item is not existing
       product.qty = 1;
       productsFromLocalStorage.push(product);
     }

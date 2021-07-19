@@ -18,6 +18,48 @@
       .product {
         background-color: antiquewhite;
       }
+
+      /* table  */
+      table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table td,
+      table thead {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+        width: 10%;
+      }
+
+      table tr img {
+        width: 50%;
+      }
+
+      table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      table tr:hover {
+        background-color: #ddd;
+      }
+      table thead tr:hover {
+        background-color: rgb(1, 142, 207);
+      }
+
+      table thead {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #0476aa;
+        color: white;
+      }
+      .table-none {
+        display: none;
+      }
+      /* table end  */
     </style>
   </head>
   <body>
@@ -32,7 +74,20 @@
       </section>
       <section>
         <h2>Cart</h2>
-        <div id="cart"></div>
+        <div id="cart">
+          <table class="table-none">
+            <thead>
+              <tr>
+                <td>Image</td>
+                <td>Name</td>
+                <td>Quantity</td>
+                <td>Total price</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
       </section>
     </main>
     <footer></footer>
