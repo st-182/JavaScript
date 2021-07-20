@@ -1,0 +1,8 @@
+add git ignore to the folder
+
+git init
+git status
+
+git commit -m "first commit:starter files"
+
+adding commands from github in order to connect repo su github

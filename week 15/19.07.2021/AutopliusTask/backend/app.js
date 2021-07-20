@@ -1,4 +1,5 @@
 import express from "express";
+import colors from "colors";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -13,4 +14,6 @@ const app = express();
 app.get(`/`, (req, res) => res.send(`API is running`));
 
 //Starting server
-app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server is running on ${PORT}`.yellow.underline)
+);
