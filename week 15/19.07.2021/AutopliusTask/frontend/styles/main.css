@@ -1,14 +1,76 @@
+/* Resets */
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+input,
+button,
+span,
+a,
+div {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+/* Variables */
+:root {
+  /* Colors */
+  --primary-color: blue;
+  --secondary-color: lightblue;
+  --text-dark-color: black;
+  --text-light-color: white;
+}
 /* Utilities */
-
 .container {
-  padding: 0 15px;
   max-width: 1024px;
   margin: 0 auto;
-  background-color: wheat;
+  padding: 0 15px;
+}
+/* MOBILE FIRST */
+/* Mobile */
+/* -Header- */
+header {
+  background-color: var(--primary-color);
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .container div {
+  color: var(--text-light-color);
+  font-size: 22px;
+  text-transform: uppercase;
+}
+header .container nav ul {
+  display: flex;
+  list-style: none;
+}
+header .container nav ul li {
+  padding: 15px;
+}
+header .container nav ul li a {
+  color: var(--text-light-color);
+  text-decoration: none;
+}
+header .container nav ul li:hover {
+  background: white;
+}
+header .container nav ul li:hover a {
+  color: var(--primary-color);
+}
+/* -Main- */
+main .container section {
+  padding: 40px;
+}
+main .container section h1 {
+  text-align: center;
+  font-size: 1.7em;
 }

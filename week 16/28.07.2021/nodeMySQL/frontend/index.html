@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h2>SEND CAR</h2>
+    <form>
+      <label for="car">Car</label>
+      <input type="text" id="car" />
+      <label for="make">Make</label>
+      <input type="text" id="make" />
+      <label for="model">Model</label>
+      <input type="text" id="model" />
+      <label for="year">Year</label>
+      <input type="text" id="year" />
+
+      <input type="submit" />
+    </form>
+    <h2>CREATE TABLE</h2>
+    <form id="form">
+      <label for="name">DB name</label>
+      <input type="text" id="name" />
+      <input type="submit" />
+    </form>
+
+    <h2>SEND ONE</h2>
+    <form id="one">
+      <label for="make">Make</label>
+      <input type="text" id="make" />
+      <label for="model">Model</label>
+      <input type="text" id="model" />
+
+      <input type="submit" />
+    </form>
+    <h2>CARS FROM CARS DB</h2>
+    <div id="cars-output" class="output"></div>
+    <h2>CARS FROM ONES DB</h2>
+    <div id="ones-output" class="output"></div>
+    <h2>Select one from ONES to be shown here</h2>
+    <div id="select">
+      <p>Select your ONE by ID</p>
+      <select name="" id=""></select>
+      <div id="one-ones-output"></div>
+      <button id="show">Show</button>
+      <button id="delete">Delete</button>
+    </div>
+
+    <script>
+      const formElement = document.querySelector("form");
+      const createTableElement = document.querySelector("#form");
+      const oneElement = document.querySelector("#one");
+
+      formElement.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const car = {
+          car: e.target.car.value,
+          make: e.target.make.value,
+          model: e.target.model.value,
+          year: e.target.year.value,
+        };
+        console.log(car);
+        return fetch("http://localhost:5000/api/cars", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(car),
+        });
+      });
+
+      oneElement.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const one = {
+          make: e.target.make.value,
+          model: e.target.model.value,
+        };
+        console.log(one);
+        return fetch("http://localhost:5000/api/ones", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(one),
+        }).then((res) => {
+          console.log(res);
+          showItNow();
+        });
+      });
+
+      createTableElement.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const tableName = {
+          tableName: e.target.name.value,
+        };
+        console.log(tableName);
+        return fetch("http://localhost:5000/api/admin/createtable", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(tableName),
+        });
+      });
+
+      // get cars
+      document.addEventListener(`DOMContentLoaded`, () => {
+        fetch("http://localhost:5000/api/cars")
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            let output = document.querySelector(`#cars-output`);
+            data.forEach((car) => {
+              output.innerHTML += `
+              <p>${car.make} ${car.model} ${car.year}</p>
+              `;
+            });
+          });
+      });
+      //get ones
+
+      const addEventListenerToSelect = () => {
+        let output = document.querySelector(`select`);
+        let deleteBTN = document.querySelector(`#delete`);
+        let showBTN = document.querySelector(`#show`);
+        deleteBTN.addEventListener(`click`, () => {
+          console.log(output.value);
+          fetch(`http://localhost:5000/api/ones/${output.value}`, {
+            method: `DELETE`,
+            headers: {
+              "Content-Type": `application/json`,
+            },
+          }).then((res) => {
+            console.log(res);
+            showItNow();
+          });
+        });
+        showBTN.addEventListener(`click`, () => {
+          console.log(output.value);
+          fetch(`http://localhost:5000/api/ones/${output.value}`)
+            .then((res) => res.json())
+            .then((data) => {
+              let output = document.querySelector(`#one-ones-output`);
+              output.innerHTML = `
+          <p>${data[0].ID}: ${data[0].make} ${data[0].model}</p>
+          `;
+            });
+        });
+      };
+
+      const showItNow = () => {
+        fetch("http://localhost:5000/api/ones")
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            let output = document.querySelector(`#ones-output`);
+            output.innerHTML = ``;
+            data.forEach((one) => {
+              output.innerHTML += `
+              <p>${one.make} ${one.model}</p>
+              `;
+            });
+            console.log(data.length);
+            options = data.reduce((acc, cur) => {
+              acc += `<option>${cur.ID}</option>`;
+              return acc;
+            }, ``);
+            let output2 = document.querySelector(`select`);
+            output2.innerHTML = options;
+            addEventListenerToSelect();
+          });
+      };
+      document.addEventListener(`DOMContentLoaded`, showItNow);
+    </script>
+  </body>
+</html>

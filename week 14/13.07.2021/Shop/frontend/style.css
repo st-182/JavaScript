@@ -96,6 +96,13 @@ main {
   width: 25%;
 }
 
+.remove-item-btns,
+.add-item-btns {
+  padding: 10px;
+  background-color: hsl(24, 53%, 69%);
+  cursor: pointer;
+}
+
 @media screen and (max-width: 500px) {
   .header {
     display: block;

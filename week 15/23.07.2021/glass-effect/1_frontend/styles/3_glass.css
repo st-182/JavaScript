@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Zen Tokyo Zoo', cursive;
+}
+
+:root {
+  --light: #f3f3f3;
+  --grey: #c0c0c0;
+  --dark-grey: #7e7e7e;
+}
+
+  /* mobile first */
+
+
+  .glass-main {
+    height: 90vh;
+    width: 100vw;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .glass-container {
+    height: 100%;
+    width: 60%;
+  }
+
+  .circle-top img{
+    height: 45rem;
+    width: 45rem;
+    border-radius: 50%;
+    filter: blur(4px);
+    position: absolute;
+    left: 24%;
+    top: 0;
+  }
+
+  .circle-bottom img {
+    height: 35rem;
+    width: 35rem;
+    border-radius: 50%;
+    filter: blur(6px);
+    position: absolute;
+    right: 28%;
+    bottom: 10%;
+  }
+
+
+  .square{
+    height: 40rem;
+    width: 40rem;
+    border-radius: 15px;
+    background-color: white;
+    opacity: 0.2;
+    border: 2px solid rgb(255, 73, 73);  
+    position: absolute;
+    border-radius: 5rem;
+    filter:blur(3px);
+    backdrop-filter: blur(20px);
+  }
+
+  .square-boxes{
+    height: 40rem;
+    width:40rem;
+    backdrop-filter: blur(30px);
+    border-radius: 5rem;
+    position: absolute;
+    top: 25%;
+    left: 35%;
+  }
+
+  .border {
+    height: 40rem;
+    width:40rem;
+    border-top: 1px solid white;
+    border-right: 2px solid white;
+    border-left: 1px solid white;
+    border-bottom: 2px solid white;
+    filter: blur(1px);
+    position: absolute;
+    border-radius: 5rem;
+  }
+
+  .visible-square {
+    height: 40rem;
+    width: 40rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .logo {
+    height: 20%;
+  }
+
+  .logo img{
+    width: 10rem;
+    height: 10rem;
+    opacity: 0.9;
+  }
+
+  .two-text-boxes {
+    color: white;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    opacity: 0.9;
+    margin-top: 5rem;
+  }
+
+  .two-text-boxes h2 {
+    font-size: 2rem;
+    font-weight: 200;
+    letter-spacing: 0.5rem;
+  }
+
+  .two-text-boxes h4{
+    font-weight: 200;
+    letter-spacing: 0.4rem;
+  }

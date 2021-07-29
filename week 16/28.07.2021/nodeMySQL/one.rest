@@ -1,0 +1,12 @@
+POST http://localhost:5000/api/createtable
+content-type: application/json
+
+{
+    "tableName": "lol"
+}
+
+###
+DELETE http://localhost:5000/api/ones/7
+content-type: application/json
+
+

@@ -1,0 +1,63 @@
+body {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: white;
+}
+
+form {
+  width: 50%;
+  margin: 0 auto;
+}
+h2 {
+  padding-left: 5%;
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+}
+input {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+}
+input[type="submit"] {
+  grid-column: span 2;
+  transition: 500ms;
+}
+input[type="submit"]:active {
+  grid-column: span 2;
+  transition: 500ms;
+  background-color: black;
+}
+.output {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+#select {
+  height: 30vh;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+select {
+  padding: 10px 30px;
+}
+button {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  color: white;
+  transition: 500ms;
+}
+button:active {
+  transition: 500ms;
+  background: rgba(251, 255, 21, 0.8);
+}
