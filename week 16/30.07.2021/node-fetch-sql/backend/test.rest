@@ -1,0 +1,10 @@
+GET http://localhost:5000/users
+Content-Type: application/json
+
+###
+POST http://localhost:5000/create/table
+Content-Type: application/json
+
+###
+POST http://localhost:5000/from/github/to/users
+Content-Type: application/json

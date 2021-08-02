@@ -42,13 +42,16 @@ input[type="submit"]:active {
 }
 
 #select {
-  height: 30vh;
-  width: 50%;
+  height: 40vh;
+  width: 60%;
   margin: 0 auto;
   text-align: center;
 }
 select {
   padding: 10px 30px;
+}
+#select select {
+  margin: 10px;
 }
 button {
   padding: 10px;

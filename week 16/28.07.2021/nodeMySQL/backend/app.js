@@ -9,7 +9,10 @@ const connection = mysql.createConnection({
   database: "myfirstdb",
 });
 
-connection.connect(() => console.log(`Connected to db`));
+connection.connect((err) => {
+  if (err) throw err;
+  console.log("connected, error:", err, ".");
+});
 
 let app = express();
 
@@ -72,6 +75,20 @@ app.get("/api/ones/:id", (req, res) => {
   });
 });
 
+//Update one from ones
+app.put("/api/ones/:id", (req, res) => {
+  let id = req.params.id;
+  let row = req.body;
+  // console.log(id, row);
+  connection.query(
+    `UPDATE ones SET ${row.name} = '${row.content}' WHERE ID = ${id};`,
+    (err, data) => {
+      res.json(data);
+      console.log(err);
+    }
+  );
+});
+
 //delete one from ones
 app.delete("/api/ones/:id", (req, res) => {
   let id = req.params.id;
@@ -81,7 +98,6 @@ app.delete("/api/ones/:id", (req, res) => {
     console.log(err);
   });
 });
-
 
 app.listen(5000, () => {
   console.log(`working`);

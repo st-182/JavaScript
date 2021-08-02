@@ -48,6 +48,15 @@
       <div id="one-ones-output"></div>
       <button id="show">Show</button>
       <button id="delete">Delete</button>
+      <button id="update">Update</button>
+      <div class="update">
+        <select name="" id="row-name">
+          <option value="make">Make</option>
+          <option value="model">Model</option>
+        </select>
+        <label for="new-value">New value</label>
+        <input type="text" id="new-value" />
+      </div>
     </div>
 
     <script>
@@ -130,6 +139,8 @@
         let output = document.querySelector(`select`);
         let deleteBTN = document.querySelector(`#delete`);
         let showBTN = document.querySelector(`#show`);
+        let updateBTN = document.querySelector(`#update`);
+        //Delete
         deleteBTN.addEventListener(`click`, () => {
           console.log(output.value);
           fetch(`http://localhost:5000/api/ones/${output.value}`, {
@@ -139,9 +150,10 @@
             },
           }).then((res) => {
             console.log(res);
-            showItNow();
+            showItNow(false);
           });
         });
+        //Show
         showBTN.addEventListener(`click`, () => {
           console.log(output.value);
           fetch(`http://localhost:5000/api/ones/${output.value}`)
@@ -153,9 +165,26 @@
           `;
             });
         });
+        // Update
+        updateBTN.addEventListener(`click`, () => {
+          console.log(output.value);
+          fetch(`http://localhost:5000/api/ones/${output.value}`, {
+            method: `PUT`,
+            headers: {
+              "Content-Type": `application/json`,
+            },
+            body: JSON.stringify({
+              name: document.querySelector(`#row-name`).value,
+              content: document.querySelector(`#new-value`).value,
+            }),
+          }).then((res) => {
+            console.log(res);
+            showItNow(false);
+          });
+        });
       };
 
-      const showItNow = () => {
+      const showItNow = (addEvent) => {
         fetch("http://localhost:5000/api/ones")
           .then((res) => res.json())
           .then((data) => {
@@ -174,10 +203,12 @@
             }, ``);
             let output2 = document.querySelector(`select`);
             output2.innerHTML = options;
-            addEventListenerToSelect();
+            if (addEvent) {
+              addEventListenerToSelect();
+            }
           });
       };
-      document.addEventListener(`DOMContentLoaded`, showItNow);
+      document.addEventListener(`DOMContentLoaded`, () => showItNow(true));
     </script>
   </body>
 </html>
