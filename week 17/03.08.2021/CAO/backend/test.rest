@@ -1,0 +1,10 @@
+POST http://localhost:5000/products
+Content-Type: application/json
+
+{
+    "title": "Banana",
+    "image": "https://api.time.com/wp-content/uploads/2019/11/gettyimages-459761948.jpg?quality=85&w=1024&h=512&crop=1",
+    "price": "0.69"
+}
+
+

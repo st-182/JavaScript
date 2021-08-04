@@ -11,8 +11,22 @@ import productModel from "./models/productsModel.js";
 
 const PORT = process.env.PORT;
 
+//Starting mongoose
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: true,
+  })
+  .then((response) => {
+    console.log(`Connected to mongodb`);
+  });
+
 // Routes
-app.get(`/`, (req, res) => res.send(`API is running`));
+app.get(`/`, (req, res) => {
+  productModel.find().then();
+  res.send(`API is running`);
+});
 
 //Starting server
 app.listen(PORT, () => console.log(`Starting on port:${PORT}`));
