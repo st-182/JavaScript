@@ -24,6 +24,11 @@ body {
   /* padding-right: 20px; */
 }
 
+/*! DISPLAY NONE */
+.none {
+  display: none;
+}
+
 /*!---------- Header ----------*/
 header {
   padding-top: 20px;
@@ -50,6 +55,30 @@ header .container .cart-and-links {
   align-items: center;
   gap: 10px;
 }
+header .container .cart-and-links .links {
+  position: relative;
+}
+header .container .cart-and-links .links a:nth-child(3):hover + .hover-show {
+  display: flex;
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  transform: translate(-41%);
+  padding-top: 13px;
+}
+header .container .cart-and-links .links .hover-show:hover {
+  display: flex;
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  transform: translate(-41%);
+  padding-top: 13px;
+}
+header .container .cart-and-links .links .hover-show a:nth-child(3):after {
+  display: none;
+}
 header .container .cart-and-links .links a {
   text-decoration: none;
   color: hsl(0, 0%, 0%);
@@ -63,6 +92,8 @@ header .container .cart-and-links .links a:hover {
   color: white;
   transition: 300ms;
 }
+header .container .cart-and-links .links a:nth-child(3) {
+}
 header .container .cart-and-links .links a:nth-child(3):after {
   content: "⌄";
   /* padding-left: 10px; */
@@ -74,10 +105,12 @@ header .container .cart-and-links .links a:nth-child(3):after {
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-left: 10px;
+  margin-left: 12px;
   line-height: normal;
   transform: translate(0px, -4px) scale(1.5, 1);
+  height: 100%;
 }
+
 .cart {
   width: auto;
 }
